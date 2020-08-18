@@ -1,0 +1,13 @@
+
+  type Query {
+    hello: Product
+  }
+
+  type Query {
+    department:String
+  }
+
+  type Product{
+    name:String
+    price: String
+  }

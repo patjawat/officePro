@@ -1,0 +1,6 @@
+query users {
+  allUser {
+    id
+    username
+  }
+}

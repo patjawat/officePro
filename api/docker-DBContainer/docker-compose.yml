@@ -1,0 +1,150 @@
+version: "3.5"
+
+services:
+  postgres:
+    container_name: postgres_container_fullstack
+    image: postgres
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=admin"
+    # PGDATA: /data/postgres
+    volumes:
+      - ./database/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_container_fullstack
+    image: dpage/pgadmin4
+    environment:
+      - "PGADMIN_DEFAULT_EMAIL=patjawat@gmail.com"
+      - "PGADMIN_DEFAULT_PASSWORD=admin"
+    volumes:
+      - ./database/pgadmin:/var/lib/pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  mariaDB:
+    image: mariadb
+    hostname: mariadb
+    container_name: mariadb_fullstack
+    restart: always
+    volumes:
+        # - ./docker/mariadb/initdb/:/docker-entrypoint-initdb.d
+        # - ./docker/mariadb/conf.d:/etc/mysql/conf.d
+        - ./database/mariadb/data/:/var/lib/mysql
+    command:
+        [
+          "mysqld",
+          "--character-set-server=utf8",
+          "--collation-server=utf8_general_ci",
+        ]
+
+    ports:
+        - 3306:3306
+    environment:
+        - TZ=Asia/Bangkok
+        - MYSQL_ROOT_PASSWORD=docker
+        - MYSQL_USER=sa
+        - MYSQL_PASSWORD=sa
+        - MYSQL_ROOT_HOST=%
+
+  phpmyadmin_mariadb:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadminMaria_fullstack
+    links:
+        - mariaDB:db
+    ports:
+        - 8400:80
+    environment:
+        MYSQL_USERNAME: root
+        MYSQL_ROOT_PASSWORD: root
+        PMA_HOST: mariaDB  
+
+  mysql80:
+    image: mysql:8.0
+    container_name: mysql8.0_fullstack
+    ports:
+        - 3380:3306
+    environment:
+        - MYSQL_DATABASE=work
+        - MYSQL_USER=worker
+        - MYSQL_PASSWORD=worker
+        - MYSQL_ROOT_PASSWORD=root
+        - TZ=UTC
+    volumes:
+        - ./database/mysql/mysql8.0/conf.d:/etc/mysql/conf.d:ro
+        - ./database/mysql/mysql8.0/logs:/var/log/mysql:rw
+        # - ./docker/mysql/mysql8.0/initdb.d:/docker-entrypoint-initdb.d:ro
+        - ./database/mysql/common:/app:ro
+        - ./database/mysql/mysql8.0/data/:/var/lib/mysql
+  
+  phpmyadmin_mysql:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadminMysql_fullstack
+    links:
+      - mysql80:db
+    ports:
+      - 8300:80
+    environment:
+        MYSQL_USERNAME: root
+        MYSQL_ROOT_PASSWORD: docker
+        PMA_HOST: mariaDB  
+
+
+  mongoDB:
+    image: mongo:latest
+    container_name: "mongodb-container"
+    environment:
+          # - MONGO_DATA_DIR=/data/db
+          # - MONGO_LOG_DIR=/dev/null
+          # - MONGO_INITDB_ROOT_USERNAME=root
+          # - MONGO_INITDB_ROOT_PASSWORD=docker
+          - MONGO_INITDB_DATABASE=example
+    volumes:
+          - ./database/mongoDB/db:/data/db
+    ports:
+          - 27017-27019:27017-27019
+    # command: mongod --smallfiles --logpath=/dev/null # --quiet      
+
+
+  admin-mongo:
+      image: 0x59/admin-mongo:latest
+      ports:
+        - "8082:8082"
+      environment:
+        - PORT=8082
+        - CONN_NAME=mongo
+        - DB_HOST=mongo
+      links:
+        - mongoDB
+
+  mongo-express:
+      image: mongo-express
+      restart: always
+      ports:
+        - 8081:8081
+      environment:
+        - 'ME_CONFIG_MONGODB_ADMINUSERNAME=root'
+        - 'ME_CONFIG_MONGODB_ADMINPASSWORD=docker'
+      links:
+        - mongoDB
+
+
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:
+
+
+#mongodb://YourUsername:YourPasswordHere@127.0.0.1:27017/your-database-name

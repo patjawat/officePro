@@ -1,0 +1,41 @@
+1. สร้าง type สำหรับ graphql
+2. สร้าง resolve
+
+
+yarn sequelize-cli model:generate --name Product --attributes name:string,store:string,price:integer
+
+generate auto model
+sequelize-auto -o "db/models" -d sqlnode -h localhost -u postgres  -p 5432 -x admin -e postgres
+
+//คำสั่งส insert 
+mutation create{
+  createProduct{}
+    name:"aaaa",
+    price:"300"
+  ){
+    name
+    price
+  }
+}
+
+ค้นหาจาก ID
+query{
+  getProduct(id:1){
+    name
+    price
+  }
+}
+
+
+Update ข้อมุล
+mutation{
+  updateProduct(
+    id:1,
+    name:"Test3333",
+    price:"509",
+    
+  ){
+    name
+    price
+  }
+}
