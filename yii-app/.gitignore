@@ -31,4 +31,4 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
-/docker/mariadb/data
+# /docker/mariadb/data
