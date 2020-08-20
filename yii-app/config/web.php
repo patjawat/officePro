@@ -4,7 +4,7 @@ $db = require __DIR__ . '/db.php';
 $dbroom = require __DIR__ . '/dbroom.php';
 $dbhr = require __DIR__ . '/dbhr.php';
 $dbcar2 = require __DIR__ . '/dbcar2.php';
-$modules = require __DIR__ . '/add_modules.php';
+$modules = require __DIR__ . '/modules.php';
 
 $config = [
     'id' => 'basic',
@@ -16,6 +16,13 @@ $config = [
     ],
     'modules' => $modules,
     'components' => [
+        // 'view' => [
+        // 'theme' => [
+        //     'pathMap' => [
+        //         '@app/views' => '@app/themes/adminlte3/views'
+        //     ]
+        // ]
+        //     ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'frn_q1_Q9M7rbSturz3z_th3xxlAJsdk',
@@ -70,6 +77,20 @@ $config = [
         'db' => $db,
         'dbhr' => $dbhr,
         'dbroom' => $dbroom,
+        'mr' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=mariadb;port=3306;dbname=mr',
+            'username' => 'root',
+            'password' => 'docker',
+            'charset' => 'utf8',
+        ],
+        [
+             'class' => 'yii\db\Connection',
+    'dsn' => 'mysql:host=mariadb;port=3306;dbname=meeting_room',
+    'username' => 'root',
+    'password' => 'docker',
+    'charset' => 'utf8',
+        ],
         /*
     'urlManager' => [
     'enablePrettyUrl' => true,

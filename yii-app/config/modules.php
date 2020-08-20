@@ -48,7 +48,7 @@ $modules['gridview'] = ['class' => '\kartik\grid\Module']; //system
 $modules['admin'] = ['class' => 'mdm\admin\Module']; // จัดการระบ
 $modules['gridviewKrajee'] = ['class' => '\kartik\grid\Module']; //system
 $modules['usermanager'] = ['class' => 'app\modules\usermanager\Usermanager']; //จัดการผู้ใช้งานระบบ
-$modules['mr'] = ['class' => 'app\modules\mr\Mr']; //ระบบจัดการห้องประชุม
+$modules['mr'] = ['class' => 'app\modules\mr\Module']; //ระบบจัดการห้องประชุม
 $modules['hr'] = ['class' => 'app\modules\hr\Hr']; //ระบบงานออฟฟิศ
 $modules['stock'] = ['class' => 'app\modules\stock\Stock']; //ระบบงานพัสดุ
 
