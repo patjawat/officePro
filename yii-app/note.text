@@ -3,3 +3,6 @@ GRANT All PRIVILEGES ON *.*  to 'root'@'127.0.0.1' IDENTIFIED BY 'sa'  WITH GRAN
 GRANT All PRIVILEGES ON *.*  to 'root'@'::1' IDENTIFIED BY 'sa'  WITH GRANT OPTION;
 GRANT All PRIVILEGES ON *.*  to 'root'@'%' IDENTIFIED BY 'sa'  WITH GRANT OPTION;
 flush privileges;
+
+## Run migrate
+yii migrate --db=db2

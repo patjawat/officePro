@@ -21,7 +21,7 @@ use yii\helpers\Html;
                     <?=Html::a('หน้าหลัก', ['/site'], ['class' => 'nav-link'])?>
                 </li>
                 <li class="nav-item">
-                    <?=Html::a('จองห้องประชุม', ['/mr'], ['class' => 'nav-link']);?>
+                    <?=Html::a('ห้องประชุม', ['/mr'], ['class' => 'nav-link']);?>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
