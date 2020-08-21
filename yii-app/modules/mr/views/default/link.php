@@ -3,9 +3,8 @@ use yii\helpers\Html;
 ?>
 <div class="d-flex bd-highlight mb-3">
   <div class="p-2 bd-highlight">
-<a name="" id="" class="btn btn-primary" href="#" role="button">รายการ</a>
-<a name="" id="" class="btn btn-secondary" href="#" role="button">จองห้องหระชุม</a>
-  
+  <?=Html::a('รายการ',['/mr/meeting-room'], ['class' => 'btn btn-primary'])?>
+  <?=Html::a('ปฏิทิน',['/mr'], ['class' => 'btn btn-secondary'])?>
   </div>
   <div class="ml-auto p-2 bd-highlight">
   <?=Html::a('ตั้งค่า',['/mr/meeting-room'], ['class' => 'btn btn-secondary'])?>

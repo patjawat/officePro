@@ -3,6 +3,7 @@
 namespace app\modules\mr\models;
 
 use Yii;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "mr_meeting_room".
@@ -36,8 +37,9 @@ class MeetingRoom extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['data_json'], 'string'],
             [['name'], 'string', 'max' => 255],
+            [['data_json'], 'safe'],
+
         ];
     }
 
@@ -51,5 +53,17 @@ class MeetingRoom extends \yii\db\ActiveRecord
             'name' => 'ชื่อห้องประชุม',
             'data_json' => 'Data Json',
         ];
+    }
+    public function afterFind() {
+        $this->data_json = Json::decode($this->data_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        return parent::afterFind();
+    }
+    public function beforeSave($insert) {
+        if (parent::beforeSave($insert)) {
+            $this->data_json = Json::encode($this->data_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

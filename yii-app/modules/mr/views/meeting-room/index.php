@@ -3,48 +3,58 @@
 use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
-/* @var $this yii\web\View */
-/* @var $searchModel app\modules\mr\models\MeetingRoomSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
+use yii\bootstrap4\LinkPager;
 $this->title = 'ห้องประชุม';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?=$this->render('../default/link')?>
 
-<!-- <div class="card text-white bg-dark shadow-lg rounded wrapper-box mt-5"> -->
-<div class="card">
-              <div class="card-header ui-sortable-handle" style="cursor: move;">
-                <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                <?=Html::encode($this->title)?>
-                </h3>
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                        <?=Html::a('<i class="fas fa-plus"></i> สร้างใหม่', ['create'], ['class' => 'btn btn-success nav-link text-white'])?>
-                    </li>
-                  </ul>
-                </div>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-              <?php Pjax::begin();?>
-                <?=GridView::widget([
-    'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
-    'options' => [
-      // 'class' => 'table table-dark',
-   ],
-    'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
+<?php  Html::a('<i class="fas fa-plus"></i> สร้างใหม่', ['create'], ['class' => 'btn btn-success  text-white'])?>
+<?php foreach ($dataProvider->getModels() as $model): ?>
+<!-- <div class="card card-widget shadow mb-3 bg-white rounded collapse-card collapsed-card"> -->
+<div class="card card-widget shadow mb-3 bg-white rounded">
+    <div class="card-header">
+        <div class="user-block">
+            <img class="img-circle" src="/img/user1-128x128.jpg" alt="User Image">
+            <span class="username"><a href="#" data-card-widget="collapse">ห้องประชุม <?=$model->name?></a> :
+              
+            </span>
+            <span class="description">
+               xxx
 
-        'id',
-        'name',
-        'data_json:ntext',
+            </span>
 
-        ['class' => 'yii\grid\ActionColumn'],
-    ],
-]);?>
-            <?php Pjax::end();?>
+        </div>
+        <!-- /.user-block -->
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Mark as read">
+                <i class="far fa-circle"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" aria-expanded="false"><i
+                    class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+            </button>
+        </div>
+        <!-- /.card-tools -->
     </div>
-</div>
+    <!-- /.card-header -->
+    <div class="card-body">
 
+    <div class="d-flex bd-highlight">
+  <div class="p-2 flex-shrink-1 bd-highlight">
+  <?=Html::img('@web/adminlte3/dist/img/user1-128x128.jpg');?>
+  </div>
+  <div class="p-2 w-100 bd-highlight">Flex item</div>
+</div>
+        <!-- Social sharing buttons -->
+        <?=Html::a('<i class="fas fa-print"></i> Print QR-Code', ['/mr/events/print-qr', 'id' => $model->id], ['class' => 'btn btn-primary', 'target' => '_blank', 'data-pjax' => 0])?>
+        <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
+        <span class="float-right text-muted">45 likes - 2 comments</span>
+    </div>
+    <!-- /.card-body -->
+</div>
+<?php endforeach;?>
+<?php
+$dataProvider->getCount();
+echo LinkPager::widget(['pagination' => $dataProvider->getPagination()]);
+?>

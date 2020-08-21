@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
-            'data_json:ntext',
+            // 'data_json:ntext',
         ],
     ]) ?>
 

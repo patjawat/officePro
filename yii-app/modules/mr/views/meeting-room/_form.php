@@ -16,7 +16,7 @@ use yii\bootstrap4\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true,'class'=>'form-dark']) ?>
 
-    <?= $form->field($model, 'data_json[photo]')->fileInput()->label('รูปภาพ') ?>
+    <?= $form->field($model, 'data_json[photo]')->textInput()->label('รูปภาพ') ?>
 
     <div class="form-group">
         <?= Html::submitButton('<i class="fas fa-check"></i> บันทึก', ['class' => 'btn btn-primary']) ?>
