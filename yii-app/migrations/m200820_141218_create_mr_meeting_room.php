@@ -18,6 +18,7 @@ class m200820_141218_create_mr_meeting_room extends Migration
         $this->createTable('mr_meeting_room',[
             'id' => $this->primaryKey()->comment('รหัส'),
             'name' => $this->string(255)->notNull()->comment('ชื่อห้องประชุม'),
+            'photo' => $this->string(255)->comment('รูปภาพ'),
             'data_json' => $this->json(),
         ]);
     }

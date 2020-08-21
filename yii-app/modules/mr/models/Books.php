@@ -5,10 +5,10 @@ namespace app\modules\mr\models;
 use Yii;
 
 /**
- * This is the model class for table "books".
+ * This is the model class for table "mr_books".
  *
  * @property int $id
- * @property string|null $title
+ * @property string|null $topic
  * @property string|null $content
  * @property string|null $photo
  * @property int|null $cost
@@ -24,7 +24,7 @@ class Books extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'books';
+        return 'mr_books';
     }
 
     /**
@@ -44,7 +44,7 @@ class Books extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['cost', 'price', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['title', 'photo'], 'string', 'max' => 255],
+            [['topic', 'photo'], 'string', 'max' => 255],
         ];
     }
 
@@ -55,7 +55,7 @@ class Books extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'topic' => 'Topic',
             'content' => 'Content',
             'photo' => 'Photo',
             'cost' => 'Cost',

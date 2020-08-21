@@ -18,7 +18,7 @@ class BooksSearch extends Books
     {
         return [
             [['id', 'cost', 'price', 'status'], 'integer'],
-            [['title', 'content', 'photo', 'created_at', 'updated_at'], 'safe'],
+            [['topic', 'content', 'photo', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -66,7 +66,7 @@ class BooksSearch extends Books
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
+        $query->andFilterWhere(['like', 'topic', $this->topic])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'photo', $this->photo]);
 

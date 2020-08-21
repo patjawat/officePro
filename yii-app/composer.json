@@ -54,7 +54,9 @@
         "tecsin/yii2-elfinder": "*",
         "mihaildev/yii2-elfinder": "*",
         "chillerlan/php-qrcode": "^3.1",
-        "mdmsoft/yii2-autonumber": "~1.0"
+        "mdmsoft/yii2-autonumber": "~1.0",
+        "yiisoft/yii2-imagine": "~2.2.0",
+        "dkhlystov/yii2-uploadimage": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

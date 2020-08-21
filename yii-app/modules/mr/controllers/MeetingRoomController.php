@@ -8,7 +8,7 @@ use app\modules\mr\models\MeetingRoomSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\helpers\Json;
 /**
  * MeetingRoomController implements the CRUD actions for MeetingRoom model.
  */
@@ -87,7 +87,10 @@ class MeetingRoomController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            // return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
+
         }
 
         return $this->render('update', [

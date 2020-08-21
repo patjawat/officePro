@@ -15,9 +15,11 @@ use yii\bootstrap4\ActiveForm;
 <div class="card-body">
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true,'class'=>'form-dark']) ?>
-
-    <?= $form->field($model, 'data_json[photo]')->textInput()->label('รูปภาพ') ?>
-
+    <?= $form->field($model, 'photo')->widget(\dkhlystov\uploadimage\widgets\UploadImage::className(), [
+    'maxImageWidth' => 640,
+    'maxImageHeight' => 480,
+    'uploadPath' => '/uploads/mr/img'
+]) ?>
     <div class="form-group">
         <?= Html::submitButton('<i class="fas fa-check"></i> บันทึก', ['class' => 'btn btn-primary']) ?>
         <?=Html::a('ยกเลิก',['/mr/meeting-room'],['class' => 'btn btn-default'])?>
