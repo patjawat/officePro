@@ -20,6 +20,7 @@ class m200819_152542_create_mr_book extends Migration
     {
         $this->createTable('mr_books', [
             'id' => $this->primaryKey(),
+            'mr_room_id' => $this->integer()->notNull(),
             'topic' => $this->string(255),
             'content' => $this->text(),
             'photo' => $this->string(255),
@@ -28,12 +29,13 @@ class m200819_152542_create_mr_book extends Migration
             'status' => $this->integer(1),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp(),
-        ]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
+            ]);
+            
+        }
+        
+        /**
+         * {@inheritdoc}
+         */
     public function safeDown()
     {
         echo "m200819_152542_create_mr cannot be reverted.\n";
