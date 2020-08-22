@@ -3,7 +3,7 @@
 namespace app\modules\mr\models;
 
 use Yii;
-
+use yii\helpers\Json;
 /**
  * This is the model class for table "mr_books".
  *
@@ -41,8 +41,7 @@ class Books extends \yii\db\ActiveRecord
         return [
             [['category_id'], 'required'],
             [['category_id'], 'integer'],
-            [['data_json'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at','date_start','date_end','status','data_json'], 'safe'],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }

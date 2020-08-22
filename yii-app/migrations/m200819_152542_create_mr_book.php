@@ -23,10 +23,10 @@ class m200819_152542_create_mr_book extends Migration
             'category_id' => $this->integer()->notNull()->comment('ห้องประชุม'),
             'date_start' => $this->dateTime(),
             'date_end' => $this->dateTime(),
-            'status' => $this->init(),
+            'status' => $this->integer(),
             'data_json' => $this->json(),
-            'created_by' => $this->init(),
-            'updated_by' => $this->init(),
+            'created_by' => $this->integer(),
+            'updated_by' => $this->integer(),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp(),
             ]);

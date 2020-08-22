@@ -3,11 +3,11 @@ use yii\helpers\Html;
 ?>
 <div class="d-flex bd-highlight mb-3">
   <div class=" bd-highlight">
-  <?=Html::a('รายการ',['/mr/rooms'], ['class' => 'btn btn-primary loading-page'])?>
-  <?=Html::a('ปฏิทิน',['/mr'], ['class' => 'btn btn-secondary loading-page'])?>
+  <?=Html::a('รายการ',['/mr'], ['class' => 'btn btn-primary loading-pagexx'])?>
+  <?=Html::a('ปฏิทิน',['/mr/default/calendar'], ['class' => 'btn btn-secondary loading-pagexx'])?>
   </div>
   <div class="ml-auto bd-highlight">
-  <?=Html::a('ตั้งค่า',['/mr/meeting-room'], ['class' => 'btn btn-secondary loading-page'])?>
+  <?=Html::a('ตั้งค่า',['/mr/category'], ['class' => 'btn btn-secondary loading-pagexx'])?>
 <div class="btn-group">
                     <button type="button" class="btn btn-secondary">ตั้งค่า</button>
                     <button type="button" class="btn btn-secondary dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">

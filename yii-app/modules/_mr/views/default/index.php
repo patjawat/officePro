@@ -39,10 +39,10 @@ $this->registerJS($this->render('../../web/js/countdown.min.js'));
             </span>
             <span class="description">(<?=$model->room->name;?>) :
                 <?php
-$start = explode(" ", $model->start);
-$end = explode(" ", $model->end);
-echo Yii::$app->thaiFormatter->asDateTime($model->start, 'php:d/m/Y') . ' เวลา : ' . $start[1] . ' - ' . $end[1];
-?>
+                    $start = explode(" ", $model->start);
+                    $end = explode(" ", $model->end);
+                    echo Yii::$app->thaiFormatter->asDateTime($model->start, 'php:d/m/Y') . ' เวลา : ' . $start[1] . ' - ' . $end[1];
+                    ?>
 
             </span>
 

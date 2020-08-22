@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
   </div>
 </div>
         <!-- Social sharing buttons -->
-        <?=Html::a('<i class="fas fa-print"></i> จองห้องประชุม', ['/mr/books/create', 'category_id' => $model->id], ['class' => 'btn btn-primary loading-page', 'data-pjax' => 0])?>
+        <?=Html::a('<i class="fas fa-print"></i> จองห้องประชุม', ['/mr/books/create', 'category_id' => $model->id], ['class' => 'btn btn-primary loading-pagexx', 'data-pjax' => 0])?>
         <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
         <span class="float-right text-muted">45 likes - 2 comments</span>
     </div>

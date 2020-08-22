@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><i class="fas fa-tasks"></i> การตั้งค่า</a>
       <?=Html::a('ห้องประชุม',['/mr/category','type' => 'room'],['class' => 'list-group-item list-group-item-action loading-page'])?>
-      <?=Html::a('สถานะห้องประชุม',['/mr/category','type' => 'status'],['class' => 'list-group-item list-group-item-action loading-page'])?>
+      <?=Html::a('อุปกรณ์',['/mr/category','type' => 'accessories'],['class' => 'list-group-item list-group-item-action loading-page'])?>
       <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
       <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
       <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>

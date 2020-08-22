@@ -10,6 +10,7 @@ use yii\helpers\Html;
 .form-group {
     margin-bottom: 5px;
 }
+
 /* .form-group>label {
     text-align: end;
     font-size: 15px;
@@ -52,8 +53,9 @@ use yii\helpers\Html;
     padding: 8px !important;
     width: 100%;
     border-radius: 5px !important;
-} */
+}
 
+*/
 </style>
 <?php
 $form = ActiveForm::begin([
@@ -69,36 +71,39 @@ $form = ActiveForm::begin([
 ?>
 <div class="card">
     <div class="card-header">
-    <i class="far fa-file-alt"></i> <?=$this->title;?>
+        <i class="far fa-file-alt"></i> <?=$this->title;?>
     </div>
     <div class="card-body">
-<div class="row">
-    <div class="col-6">
-    <?=$form->field($model, 'data_json[topic]')->textInput(['maxlength' => true])->label('หัวข้อการประชุม')?>
+        <div class="row">
+            <div class="col-6">
+                <?=$form->field($model, 'data_json[topic]')->textInput(['maxlength' => true])->label('หัวข้อการประชุม')?>
+                <?=$form->field($model, 'date_start')->textInput(['maxlength' => true])->label('เริ่ม')?>
+                <?=$form->field($model, 'date_end')->textInput(['maxlength' => true])->label('ถึง')?>
+                <?=$form->field($model, 'data_json[accessories]')->checkBoxList(ArrayHelper::map(Category::find()->where(['type' => 'accessories'])->all(), 'id', 'name'))->label('รายการอุปกรณ์')?>
+                
 
-</div>
-<div class="col-6">
-    <?=
-$form->field($model, 'category_id')->widget(Select2::classname(), [
-    'data' => ArrayHelper::map(Category::find()->all(), 'id', 'name'),
-    'options' => ['placeholder' => 'ห้องประชุม'],
-    'pluginOptions' => [
-        'allowClear' => true,
-    ],
-]);
-?>
-</div>
-</div>
+            </div>
+            <div class="col-6">
+                <?=$form->field($model, 'category_id')->widget(Select2::classname(), [
+                    'data' => ArrayHelper::map(Category::find()->all(), 'id', 'name'),
+                    'options' => ['placeholder' => 'ห้องประชุม'],
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                    ],
+                ]);
+                ?>
+                <?=$form->field($model, 'data_json[document]')->textInput(['maxlength' => true])->label('เอกสารประกอบ')?>
 
-
+            </div>
+        </div>
 
 
     </div>
     <div class="card-footer text-muted">
-    <div class="form-group">
-        <?=Html::submitButton('<i class="fas fa-check"></i> บันทึก', ['class' => 'btn btn-success'])?>
-        <?=Html::a('ยกเลิก', ['/mr/rooms'], ['class' => 'btn btn-secondary'])?>
-    </div>
+        <div class="form-group">
+            <?=Html::submitButton('<i class="fas fa-check"></i> บันทึก', ['class' => 'btn btn-success'])?>
+            <?=Html::a('ยกเลิก', ['/mr/rooms'], ['class' => 'btn btn-secondary'])?>
+        </div>
     </div>
 </div>
-    <?php ActiveForm::end();?>
+<?php ActiveForm::end();?>
