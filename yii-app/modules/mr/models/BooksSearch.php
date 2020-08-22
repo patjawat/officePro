@@ -17,8 +17,8 @@ class BooksSearch extends Books
     public function rules()
     {
         return [
-            [['id', 'cost', 'price', 'status'], 'integer'],
-            [['topic', 'content', 'photo', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'category_id'], 'integer'],
+            [['data_json', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -59,16 +59,12 @@ class BooksSearch extends Books
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'cost' => $this->cost,
-            'price' => $this->price,
-            'status' => $this->status,
+            'category_id' => $this->category_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'topic', $this->topic])
-            ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'photo', $this->photo]);
+        $query->andFilterWhere(['like', 'data_json', $this->data_json]);
 
         return $dataProvider;
     }

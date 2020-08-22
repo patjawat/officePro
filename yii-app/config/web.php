@@ -16,6 +16,16 @@ $config = [
     ],
     'modules' => $modules,
     'components' => [
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'facebook' => [
+                    'class' => 'yii\authclient\clients\Facebook',
+                    'clientId' => '248337142851364',
+                    'clientSecret' => 'patjawat',
+                ],
+            ],
+        ],
         // 'view' => [
         // 'theme' => [
         //     'pathMap' => [
@@ -131,7 +141,7 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*'],
     ];
 
     $config['bootstrap'][] = 'gii';

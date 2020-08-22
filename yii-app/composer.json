@@ -56,7 +56,8 @@
         "chillerlan/php-qrcode": "^3.1",
         "mdmsoft/yii2-autonumber": "~1.0",
         "yiisoft/yii2-imagine": "~2.2.0",
-        "dkhlystov/yii2-uploadimage": "*"
+        "dkhlystov/yii2-uploadimage": "*",
+        "yiisoft/yii2-authclient": "^2.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

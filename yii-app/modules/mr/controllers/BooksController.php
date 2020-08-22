@@ -64,9 +64,8 @@ class BooksController extends Controller
      */
     public function actionCreate()
     {
-        $id = Yii::$app->request->get('id');
         $model = new Books([
-            'meeting_room_id' => $id
+            'category_id' => Yii::$app->request->get('category_id'),
         ]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
