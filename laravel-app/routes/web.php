@@ -13,9 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+//Route for normal user
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'HomeController@index');
+    Route::get('/home/me', 'HomeController@me');
 });
+//Route for admin
+Route::group(['prefix' => 'admin'], function(){
+    Route::group(['middleware' => ['admin']], function(){
+        Route::get('/dashboard', 'admin\AdminController@index');
+    });
+});
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('check-connect',function(){
     if(DB::connection()->getDatabaseName())
     {
@@ -30,10 +44,12 @@ Route::get('/about','SiteController@about');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/room','CategoryController@room');
 Route::resource('category','CategoryController');
-Route::resource('products','ProductsController');
+// Route::resource('products','ProductsController');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+

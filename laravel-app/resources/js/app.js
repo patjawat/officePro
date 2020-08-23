@@ -8,9 +8,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import VueRouter from "vue-router";
+import store from "./store/index";
 import DataTable from 'laravel-vue-datatable';
 import NavbarComponent from './components/NavbarComponent.vue';
 import MemberComponent from './components/MemberComponent.vue';
+import LoginForm from './components/LoginForm.vue';
 
 Vue.use(VueRouter)
 Vue.use(DataTable)
@@ -30,13 +32,14 @@ Vue.use(DataTable)
 //     require("./components/ExampleComponent.vue").default
 // );
 Vue.component("navbar-component", NavbarComponent).default;
+Vue.component("login-form", LoginForm).default;
 // Vue.component("data-table", DataTable).default;
 
 
 const routes = [
     { path: "/", component: require("./components/Site.vue").default },
     {path: "/basic",component: require("./components/ExampleComponent.vue").default},
-    // { path: "/create", component: MemberComponent.default },
+    { path: "/login", component: LoginForm.default },
     { path: "/create", component: require("./components/Create.vue").default },
     { path: "/product", component: require("./components/Product.vue").default },
     { path: "/edit/:id", component: require("./components/Edit.vue").default }
@@ -48,5 +51,6 @@ const router = new VueRouter({
 
 const app = new Vue({
     router,
+    store,
     el: '#app',
 });

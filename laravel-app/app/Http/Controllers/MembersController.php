@@ -8,6 +8,11 @@ use App\Models\Products;
 class MembersController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function Index()
     {
         $product = Products::all();

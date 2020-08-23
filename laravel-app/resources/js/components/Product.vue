@@ -52,7 +52,11 @@ export default {
         },
     methods:{
             getPosts: function() {
-                axios.get('/api/products').then(function(response){
+                axios.get('/api/auth/me',{
+                  headers: {
+    'Authorization': `token ${localStorage.getItem('token')}`
+  }
+                }).then(function(response){
                     this.rows = response.data;
                 }.bind(this));
             },

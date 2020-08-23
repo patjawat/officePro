@@ -75,9 +75,17 @@
           </div>
         </form>
       </div>
-
+ <!-- Right Side Of Navbar -->
+                 
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+         <!-- <li v-if="isLoggedIn">
+          <a id="logout-link" href="#" @click.prevent="logout">Logout</a>
+        </li> -->
+        <li>
+          <a id="logout-link" href="#" @click="logout">Logout</a>
+        </li>
+
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
@@ -172,5 +180,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+  
+  },
+  methods:{
+     logout(){
+      alert('logout');
+      axios.post('/logout').then(response=>{
+        // this.$router.push("/logoin");
+        window.location.href = 'login';
+      })
+    }
+  }
+};
 </script>
