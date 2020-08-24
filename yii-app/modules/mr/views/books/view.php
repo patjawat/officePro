@@ -14,8 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="card">
     <div class="card-header">
     <p class="mb-0">
-        <?= Html::a('แก้ไข', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('ลบทิ้ง', ['delete', 'id' => $model->id], [
+    <?=Html::a('<i class="fas fa-angle-left"></i> หน้าหลัก', ['/mr'],['class' => 'btn btn-primary'])?>
+        <?= Html::a('<i class="far fa-edit"></i> แก้ไข', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('<i class="far fa-trash-alt"></i> ลบทิ้ง', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -24,11 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
     </div>
-    <div class="card-body">
+    <div class="card-body p-0">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'category_id',
             'created_at',
             'updated_at',

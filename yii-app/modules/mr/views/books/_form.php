@@ -5,6 +5,8 @@ use kartik\widgets\Select2;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use kartik\widgets\DateTimePicker;
+use kartik\datecontrol\DateControl;
 ?>
 <style>
 .form-group {
@@ -77,8 +79,25 @@ $form = ActiveForm::begin([
         <div class="row">
             <div class="col-6">
                 <?=$form->field($model, 'data_json[topic]')->textInput(['maxlength' => true])->label('หัวข้อการประชุม')?>
-                <?=$form->field($model, 'date_start')->textInput(['maxlength' => true])->label('เริ่ม')?>
-                <?=$form->field($model, 'date_end')->textInput(['maxlength' => true])->label('ถึง')?>
+                <?=$form->field($model, 'date_start')->widget(DateControl::classname(), [
+                    'type'=>DateControl::FORMAT_DATETIME,
+                    'language'=> 'th',
+                    'widgetOptions' => [
+                        'pluginOptions' => [
+                            'autoclose' => true
+                        ]
+                    ]
+                ])->label('เริ่ม')?>
+                <?=$form->field($model, 'date_end')->widget(DateControl::classname(), [
+                    'type'=>DateControl::FORMAT_DATETIME,
+                    'language'=> 'th',
+                    'widgetOptions' => [
+                        'pluginOptions' => [
+                            'autoclose' => true
+                        ]
+                    ]
+                ])->label('ถึง')?>
+                
                 <?=$form->field($model, 'data_json[accessories]')->checkBoxList(ArrayHelper::map(Category::find()->where(['type' => 'accessories'])->all(), 'id', 'name'))->label('รายการอุปกรณ์')?>
                 
 
@@ -93,6 +112,7 @@ $form = ActiveForm::begin([
                 ]);
                 ?>
                 <?=$form->field($model, 'data_json[document]')->textInput(['maxlength' => true])->label('เอกสารประกอบ')?>
+                <?=$form->field($model, 'data_json[person_number]')->textInput(['maxlength' => true])->label('จำนวนผู้ประชุม')?>
 
             </div>
         </div>

@@ -14,6 +14,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
     ],
+    'timeZone' => 'Asia/bangkok',
     'modules' => $modules,
     'components' => [
         'authClientCollection' => [
