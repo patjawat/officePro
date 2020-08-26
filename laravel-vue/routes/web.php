@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/demo', function () {
+    // return[1,2,3];
+    // return response()->json('Hello Demo', 200)
+    // ->header('Content-Type','text-plain');
+    echo url()->current();
+});
