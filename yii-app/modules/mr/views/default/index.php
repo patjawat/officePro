@@ -3,22 +3,15 @@
 use app\modules\mr\models\Books;
 use yii\bootstrap4\LinkPager;
 use yii\helpers\Html;
-use yii\db\Expression;
 $this->title = 'ห้องประชุม';
 $this->params['breadcrumbs'][] = $this->title;
-$date1 = '2020-06-01';
-$date2 = '2020-06-02';
-if($date2 > $date1){
-    echo 'ผ่าน';
-}else{
-    echo 'รอ';
-}
-
+// $books = Books::find()
+// ->where(['category_id' => $model->id])
+// ->where('date_end < now()')
+// ->all()
 
 ?>
 <?=$this->render('../default/link')?>
-<!-- $imagine->open('/path/to/image.jpg')
-   ->show('jpg', $options); -->
 <?php Html::a('<i class="fas fa-plus"></i> สร้างใหม่', ['create'], ['class' => 'btn btn-success  text-white'])?>
 <?php foreach ($dataProvider->getModels() as $model): ?>
 <!-- <div class="card card-widget shadow mb-3 bg-white rounded collapse-card collapsed-card"> -->
@@ -31,8 +24,6 @@ if($date2 > $date1){
             </span>
             <span class="description">
                <!-- xxx -->
-              
-
             </span>
 
         </div>
@@ -56,53 +47,27 @@ if($date2 > $date1){
   <?=Html::img($model->photo, ['width' => '300px']);?>
   </div>
   <div class="p-2 w-100 bd-highlight">
-
-<?php foreach (Books::find()->where(['category_id' => $model->id])->all() as $book): ?>
+<?php
+$querys = Books::find()
+    ->andWhere(['category_id' => $model->id])
+    // ->andWhere('date_end > now()')
+    ->all();
+?>
+<?php foreach ($querys as $book): ?>
 <div>
-<h4>
-<?php
-// if($book->date_end > Date('Y-m-d H:i:s')){
-    // echo 'เสร็จ';
-    // }else{
-    // echo 'รอ';
-    // }
-    $params = [':id' => Date('Y-m-d H:i:s')];
-    $sql = 'SELECT TIMEDIFF("2017-06-25 12:30:00", :id)';
-    $query = Yii::$app->mr->createCommand($sql)
-    ->bindValues($params)
-    // ->getRawSql();
-    ->queryScalar();
-    // print_r($query);
-    // echo $query;
-    echo $query < 0 ? 'ผ่านมาแล้ว' : 'รอ';
-?>
-</h4>
-<h4>
-<?php
-// Yii::$app->formatter->locale = 'en-US';
-// echo $book->date_end.'<br>';
-// echo Date('Y-m-d H:i:s');
-// echo Yii::$app->formatter->asDateTime($time, 'php:H:i:s');
-// $time = new Expression('NOW()');
-// echo $time;
 
-?>
-</h4>
 <div class="user-block">
             <img class="img-circle" src="/adminlte3/dist/img/user1-128x128.jpg" alt="">
-            <span class="username"><span>หัวข้อ : <?=Html::a($book->data_json['topic'],['/mr/books/view','id' => $book->id],[]);?>  </span>
+            <span class="username"><span>หัวข้อ : <?=Html::a($book->data_json['topic'], ['/mr/books/view', 'id' => $book->id], []);?>  </span>
             </span>
             <span class="description">
-            15/03/2563 13.00 - 15.30
+            <?=Yii::$app->formatter->asDate($book->date_start, 'php:d/m/Y');?>
             </span>
         </div>
-
 </div>
 <br>
 <br>
 <?php endforeach;?>
-
-
   </div>
 </div>
         <!-- Social sharing buttons -->

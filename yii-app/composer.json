@@ -57,7 +57,8 @@
         "mdmsoft/yii2-autonumber": "~1.0",
         "yiisoft/yii2-imagine": "~2.2.0",
         "dkhlystov/yii2-uploadimage": "*",
-        "yiisoft/yii2-authclient": "^2.2"
+        "yiisoft/yii2-authclient": "^2.2",
+        "hail812/yii2-adminlte3": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

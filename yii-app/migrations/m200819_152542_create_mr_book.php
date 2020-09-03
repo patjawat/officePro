@@ -21,8 +21,8 @@ class m200819_152542_create_mr_book extends Migration
         $this->createTable('mr_books', [
             'id' => $this->primaryKey(),
             'category_id' => $this->integer()->notNull()->comment('ห้องประชุม'),
-            'date_start' => $this->dateTime(),
-            'date_end' => $this->dateTime(),
+            'date_start' => $this->date(),
+            'date_end' => $this->date(),
             'status' => $this->integer(),
             'data_json' => $this->json(),
             'created_by' => $this->integer(),

@@ -52,5 +52,6 @@ $modules['usermanager'] = ['class' => 'app\modules\usermanager\Usermanager']; //
 $modules['mr'] = ['class' => 'app\modules\mr\Module']; //ระบบจัดการห้องประชุม
 $modules['hr'] = ['class' => 'app\modules\hr\Hr']; //ระบบงานออฟฟิศ
 $modules['stock'] = ['class' => 'app\modules\stock\Stock']; //ระบบงานพัสดุ
+$modules['financial'] = ['class' => 'app\modules\financial\Module']; //ระบบการเงิน
 
 return $modules;

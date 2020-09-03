@@ -27,13 +27,14 @@ $config = [
                 ],
             ],
         ],
-        // 'view' => [
-        // 'theme' => [
-        //     'pathMap' => [
-        //         '@app/views' => '@app/themes/adminlte3/views'
-        //     ]
-        // ]
-        //     ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                //    '@app/views' => '@vendor/hail812/yii2-adminlte3/src/views'
+                   '@app/views' => '@app/themes/adminlte3'
+                ],
+            ],
+       ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'frn_q1_Q9M7rbSturz3z_th3xxlAJsdk',
@@ -91,6 +92,13 @@ $config = [
         'mr' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=mariadb;port=3306;dbname=mr',
+            'username' => 'root',
+            'password' => 'docker',
+            'charset' => 'utf8',
+        ],
+        'financial' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=mariadb;port=3306;dbname=financial_db',
             'username' => 'root',
             'password' => 'docker',
             'charset' => 'utf8',
