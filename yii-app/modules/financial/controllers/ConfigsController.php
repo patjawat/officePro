@@ -57,12 +57,6 @@ class ConfigsController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single FinancialConfig model.
-     * @param string $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -156,6 +150,44 @@ class ConfigsController extends Controller
             return $this->render('update',['model' => $model]);
         }
     }
+
+    public function actionAddress()
+    {
+        $model = FinancialConfig::findOne(['type' => 'address']);
+
+
+        if ($model->load(Yii::$app->request->post())) {
+            // if($model->save()){
+            //       if (Yii::$app->request->isAjax) {
+            //     Yii::$app->response->format = Response::FORMAT_JSON;
+
+            //         return [
+            //             'title' => '<i class="fas fa-plus"></i> สร้างใหม่',
+            //             'content' => $this->renderAjax('_address',['model' => $model]),
+            //             'footer' =>  Html::submitButton('แก้ไข', ['class' => 'btn btn-warning']).Html::submitButton('ยกเลิก', ['class' => 'btn btn-default','onclick' => 'return closeModal()'])
+            //         ]; 
+            // }else{
+            //     return $this->redirect(['index']);
+
+            // }
+
+            // }
+            return $model->save(false);
+            // return 'xx';
+        }
+        
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return [
+                'title' => '<i class="fas fa-plus"></i> สร้างใหม่',
+                'content' => $this->renderAjax('_address',['model' => $model]),
+                // 'footer' =>  Html::submitButton('บันทึก', ['class' => 'btn btn-success','onclick' => 'return SaveForm()']).Html::submitButton('ยกเลิก', ['class' => 'btn btn-default','onclick' => 'return closeModal()'])
+            ];
+        }else{
+            return $this->render('_address',['model' => $model]);
+        }
+    }
+
 
     /**
      * Deletes an existing FinancialConfig model.

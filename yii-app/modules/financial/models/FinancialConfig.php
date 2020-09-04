@@ -3,7 +3,7 @@
 namespace app\modules\financial\models;
 
 use Yii;
-
+use yii\helpers\Json;
 /**
  * This is the model class for table "financial_config".
  *
@@ -36,8 +36,10 @@ class FinancialConfig extends \yii\db\ActiveRecord
     {
         return [
             [['code', 'name'], 'required'],
+            [['data_json'], 'safe'],
             [['code'], 'string', 'max' => 100],
             [['name'], 'string', 'max' => 255],
+
         ];
     }
 
@@ -52,4 +54,20 @@ class FinancialConfig extends \yii\db\ActiveRecord
             'name' => 'ชื่อเรียก',
         ];
     }
+    public function afterFind() {
+        $this->data_json = Json::decode($this->data_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        return parent::afterFind();
+    }
+
+    public function beforeSave($insert) {
+        if (parent::beforeSave($insert)) {
+            $this->data_json = Json::encode($this->data_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }
