@@ -37,11 +37,12 @@
                                     ['label' => 'Level3', 'iconStyle' => 'far', 'icon' => 'dot-circle'],
                                     ['label' => 'Level3', 'iconStyle' => 'far', 'icon' => 'dot-circle'],
                                     ['label' => 'Level3', 'iconStyle' => 'far', 'icon' => 'dot-circle']
+                                    ]
+                                ],
+                                ['label' => 'Level2', 'iconStyle' => 'far']
                                 ]
                             ],
-                            ['label' => 'Level2', 'iconStyle' => 'far']
-                        ]
-                    ],
+                    ['label' => 'ลูกค้า','url' => ['/financial/customers'],'iconStyle' => 'far'],
                     [
                         'label' => 'การเงิน',
                         'icon' => 'tachometer-alt',
