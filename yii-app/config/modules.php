@@ -53,5 +53,6 @@ $modules['mr'] = ['class' => 'app\modules\mr\Module']; //ระบบจัด�
 $modules['hr'] = ['class' => 'app\modules\hr\Hr']; //ระบบงานออฟฟิศ
 $modules['stock'] = ['class' => 'app\modules\stock\Stock']; //ระบบงานพัสดุ
 $modules['financial'] = ['class' => 'app\modules\financial\Module']; //ระบบการเงิน
+$modules['crm'] = ['class' => 'app\modules\crm\Module']; //ระบบการเงิน
 
 return $modules;

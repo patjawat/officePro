@@ -7,11 +7,11 @@ use yii\db\Migration;
  */
 class m200819_152542_create_mr_book extends Migration
 {
-    public function init()
-    {
-        $this->db = 'mr';
-        parent::init();
-    }
+    // public function init()
+    // {
+    //     $this->db = 'db_office';
+    //     parent::init();
+    // }
 
     /**
      * {@inheritdoc}
@@ -32,20 +32,18 @@ class m200819_152542_create_mr_book extends Migration
             ]);
             
             
-            $this->createTable('mr_category',[
-                'id' => $this->primaryKey()->comment('รหัส'),
-                'type' => $this->string(255)->notNull()->comment('หมวดหมู่'),
-                'name' => $this->string(255)->notNull()->comment('ชื่อห้องประชุม'),
-                'photo' => $this->string(255)->comment('รูปภาพ'),
-                'data_json' => $this->json(),
-                ]);
+            // $this->createTable('mr_category',[
+            //     'id' => $this->primaryKey()->comment('รหัส'),
+            //     'type' => $this->string(255)->notNull()->comment('หมวดหมู่'),
+            //     'name' => $this->string(255)->notNull()->comment('ชื่อห้องประชุม'),
+            //     'photo' => $this->string(255)->comment('รูปภาพ'),
+            //     'data_json' => $this->json(),
+            //     ]);
                 
-                $this->addForeignKey('fk-book-categioy_id','mr_books','category_id','mr_category','id','CASCADE');
+            //     $this->addForeignKey('fk-book-categioy_id','mr_books','category_id','mr_category','id','CASCADE');
               
                 }
-            /**
-         * {@inheritdoc}
-         */
+
     public function safeDown()
     {
         echo "m200819_152542_create_mr cannot be reverted.\n";
@@ -70,6 +68,7 @@ class m200819_152542_create_mr_book extends Migration
     public function down()
     {
         $this->dropTable('mr_books');
+        // $this->dropTable('mr_category');
         return true;
     }
 }

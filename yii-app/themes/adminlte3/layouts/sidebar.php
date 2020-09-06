@@ -42,7 +42,7 @@
                                 ['label' => 'Level2', 'iconStyle' => 'far']
                                 ]
                             ],
-                    ['label' => 'ลูกค้า','url' => ['/financial/customers'],'iconStyle' => 'far'],
+                    ['label' => 'ลูกค้า','url' => ['/crm'],'iconStyle' => 'far'],
                     [
                         'label' => 'การเงิน',
                         'icon' => 'tachometer-alt',
