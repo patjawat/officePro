@@ -1,0 +1,17 @@
+<?php
+
+use yii\helpers\Html;
+
+/* @var $this yii\web\View */
+/* @var $model app\modules\crm\models\Customers */
+
+$this->title = 'สร้างใหม่';
+$this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="customers-create">
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
+
+</div>

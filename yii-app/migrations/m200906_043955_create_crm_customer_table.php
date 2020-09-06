@@ -14,12 +14,13 @@ class m200906_043955_create_crm_customer_table extends Migration
     {
         $this->createTable('{{%crm_customers}}', [
             'id' => $this->primaryKey(),
-            'gender_id' => $this->String()->notNull(),
-            'fname' => $this->String(255),
-            'lname' => $this->String(255),
-            'birthdate' => $this->Date(),
-            'address' => $this->String(255),
-            'zip_code' => $this->Integer()
+            'gender_id' => $this->String()->notNull()->comment('เพศ'),
+            'fname' => $this->String(255)->notNull()->comment('ชื่อ'),
+            'lname' => $this->String(255)->notNull()->comment('นามสกุล'),
+            'cid' => $this->String(255)->notNull()->comment('เลขบัตรประชาชน'),
+            'birthdate' => $this->Date()->notNull()->comment('วันเกิด'),
+            'address' => $this->String(255)->notNull()->comment('ที่อยู่'),
+            'zip_code' => $this->Integer()->comment('รหัสไปรษณี'),
             
         ]);
 

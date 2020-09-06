@@ -12,9 +12,6 @@ use yii\helpers\Html;
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?=\yii\helpers\Url::home()?>" class="nav-link loading-page">หน้าหลัก</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <?=Html::a('ประกาศบริษัท',['/site/news'],['class' => 'nav-link']);?>
-        </li>
         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">

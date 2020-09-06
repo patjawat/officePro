@@ -135,9 +135,10 @@ $config = [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            'profile/*',
-            'site/*',
-            'api/*',
+            // 'profile/*',
+            // 'site/*',
+            // 'api/*',
+            '*'
         ],
     ],
 
