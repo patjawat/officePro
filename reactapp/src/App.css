@@ -1,12 +1,6 @@
-.login-page, .register-page {
-  -ms-flex-align: center;
-  align-items: center;
-  background: #e9ecef;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 100vh;
-  -ms-flex-pack: center;
-  justify-content: center;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&family=Kumbh+Sans:wght@300;400;700&display=swap');
+
+html,body{
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
 }

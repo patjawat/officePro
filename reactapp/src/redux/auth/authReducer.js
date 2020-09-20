@@ -3,14 +3,15 @@ import authType from './authType'
 const initialState = {
     // isLogin: false,
     // userId: '',
-    // token: '',
+    token: localStorage.getItem("token"),
     // refreshToken: '',
     // expiresOn: '',
     // data: '',
-    isAuthUser: !!localStorage.getItem("user"),
-    user: JSON.parse(localStorage.getItem("user")) || {},
+    isAuthUser: localStorage.getItem("token") ? true : false,
+    // user: JSON.parse(localStorage.getItem("user")) || {},
     isLoading: false,
-    error: null
+    error: null,
+    user:null
 }
 
 function authReducer(state = initialState, action) {
@@ -19,13 +20,13 @@ function authReducer(state = initialState, action) {
             return {
                 ...state,
                 ...action.payload, 
-                isAuthUser: state.isAuthUser = true
+                // isAuthUser: state.isAuthUser = true
                 
             }
         case authType.USER_LOGOUT:
             return {
                 ...state,
-                isAuthUser: state.isAuthUser = false
+                // isAuthUser: state.isAuthUser = false
             }
         default:
             return state;
