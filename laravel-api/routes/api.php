@@ -47,7 +47,7 @@ Route::post('login', function () {
     // } else {
        $user = User::where('name',$req['username'])->first();
     //     //ถ้ามี tokens เดิมให้ลบของเก่าแล้วสร้างใหม่
-        $user->tokens()->delete();
+    $user->tokens()->delete();
     $token = $user->createToken('postman');
     $token = $user->createToken('postman', ['admin']);
         return response()->json([
