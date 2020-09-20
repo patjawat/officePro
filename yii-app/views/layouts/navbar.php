@@ -18,10 +18,10 @@ use yii\helpers\Html;
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <?=Html::a('หน้าหลัก', ['/site'], ['class' => 'nav-link'])?>
+                    <?=Html::a('หน้าหลัก', ['/site'], ['class' => 'nav-link loading-pagexx'])?>
                 </li>
                 <li class="nav-item">
-                    <?=Html::a('จองห้องประชุม', ['/mr'], ['class' => 'nav-link']);?>
+                    <?=Html::a('ห้องประชุม', ['/mr'], ['class' => 'nav-link loading-pagexx']);?>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"

@@ -1,3 +1,4 @@
+
 $('.modal-show').click(function (e) {
   e.preventDefault();
   var url = $(this).attr('href');
@@ -21,6 +22,27 @@ $('.modal-show').click(function (e) {
       }
   });
 });
+function SaveForm(){
+  // $("#w0").on('beforeSubmit', function (e) {
+    // e.preventDefault(); // stopping submitting
+    var form = $('#w0').attr('href');
+    $.ajax({
+        type: "post",
+        url: form,
+        dataType: "json",
+        success: function (response) {
+            $('#main-modal').modal('show');
+            $('#main-modal-label').html(response.title);
+            $('.modal-body').html(response.content);
+            $('.modal-footer').html(response.footer);
+            $(".modal-dialog").removeClass('modal-sm');
+            $(".modal-dialog").addClass('modal-lg');
+            $('.modal-content').addClass('card-outline card-primary');
+        }
+    });
+    return false;
+  // });
+}
 
 function closeModal(){
     $('#main-modal').modal('toggle');

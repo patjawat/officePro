@@ -8,7 +8,7 @@ use app\widgets\Alert;
 use yii\bootstrap4\Modal;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
-
+use app\components\loading\ShowLoading;
 // AppAsset::register($this);
 app\assets\AdminleAsset::register($this);
 
@@ -36,23 +36,27 @@ body {
     animation: gradient 15s ease infinite; */
     /* background-image: linear-gradient(-225deg, #FF057C 0%, #8D0B93 50%, #321575 100%); */
     /* background-image: linear-gradient(to top, #e8198b 0%, #c7eafd 100%); */
-    background-image: linear-gradient(-90deg, #5f72bd 0%, #9b23ea 100%);
+    /* background-image: linear-gradient(-90deg, #5f72bd 0%, #9b23ea 100%); */
+    background: linear-gradient(100deg, rgb(182, 40, 111) 50%, #ac2066 0);
 }
 
-/* @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-} */
+background: linear-gradient(100deg, rgb(182, 40, 111) 50%, #ac2066 0);
+.form-dark {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fcfdff;
+    background-color: #495057;
+    background-clip: padding-box;
+    border: 1px solid #495057;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
+ 
 </style>
 <!-- <body class="layout-top-nav"> -->
 
@@ -72,10 +76,11 @@ Modal::end();
         <?=$this->render('./navbar');?>
 
         <div class="container" style="margin-bottom: 100px;">
-            <?=Breadcrumbs::widget([
+<?php Breadcrumbs::widget([
     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 ])?>
             <?=Alert::widget()?>
+            <?=ShowLoading::widget() ?>
             <?=$content?>
         </div>
 

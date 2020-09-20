@@ -20,21 +20,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'category_id') ?>
 
-    <?= $form->field($model, 'content') ?>
+    <?= $form->field($model, 'data_json') ?>
 
-    <?= $form->field($model, 'photo') ?>
+    <?= $form->field($model, 'created_at') ?>
 
-    <?= $form->field($model, 'cost') ?>
-
-    <?php // echo $form->field($model, 'price') ?>
-
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?= $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

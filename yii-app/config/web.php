@@ -14,15 +14,27 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
     ],
+    'timeZone' => 'Asia/bangkok',
     'modules' => $modules,
     'components' => [
-        // 'view' => [
-        // 'theme' => [
-        //     'pathMap' => [
-        //         '@app/views' => '@app/themes/adminlte3/views'
-        //     ]
-        // ]
-        //     ],
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'facebook' => [
+                    'class' => 'yii\authclient\clients\Facebook',
+                    'clientId' => '248337142851364',
+                    'clientSecret' => 'patjawat',
+                ],
+            ],
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                //    '@app/views' => '@vendor/hail812/yii2-adminlte3/src/views'
+                   '@app/views' => '@app/themes/adminlte3'
+                ],
+            ],
+       ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'frn_q1_Q9M7rbSturz3z_th3xxlAJsdk',
@@ -75,15 +87,22 @@ $config = [
             ],
         ],
         'db' => $db,
-        'dbhr' => $dbhr,
-        'dbroom' => $dbroom,
-        'mr' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=mariadb;port=3306;dbname=mr',
-            'username' => 'root',
-            'password' => 'docker',
-            'charset' => 'utf8',
-        ],
+        // 'dbhr' => $dbhr,
+        // 'dbroom' => $dbroom,
+        // 'mr' => [
+        //     'class' => 'yii\db\Connection',
+        //     'dsn' => 'mysql:host=mariadb;port=3306;dbname=mr',
+        //     'username' => 'root',
+        //     'password' => 'docker',
+        //     'charset' => 'utf8',
+        // ],
+        // 'financial' => [
+        //     'class' => 'yii\db\Connection',
+        //     'dsn' => 'mysql:host=mariadb;port=3306;dbname=financial_db',
+        //     'username' => 'root',
+        //     'password' => 'docker',
+        //     'charset' => 'utf8',
+        // ],
         [
              'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=mariadb;port=3306;dbname=meeting_room',
@@ -116,9 +135,10 @@ $config = [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            'profile/*',
-            'site/*',
-            'api/*',
+            // 'profile/*',
+            // 'site/*',
+            // 'api/*',
+            '*'
         ],
     ],
 
@@ -131,7 +151,7 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*'],
     ];
 
     $config['bootstrap'][] = 'gii';

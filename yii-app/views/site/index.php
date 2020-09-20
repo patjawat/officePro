@@ -3,8 +3,6 @@
 use yii\helpers\Html;
 ?>
 
-
-
 <h1 class="text-light text-center">Pure CSS Animated Gradient Background</h1>
 <div class="text-center mb-5">
 

@@ -64,7 +64,9 @@ class BooksController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Books();
+        $model = new Books([
+            'category_id' => Yii::$app->request->get('category_id'),
+        ]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -86,7 +88,7 @@ class BooksController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

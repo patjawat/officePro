@@ -13,7 +13,7 @@ services:
         container_name: mariadb
         restart: always
         volumes:
-          - ./docker/mariadb/initdb/:/docker-entrypoint-initdb.d
+          # - ./docker/mariadb/initdb/:/docker-entrypoint-initdb.d
           # - ./docker/mariadb/conf.d:/etc/mysql/conf.d
           - ./docker/mariadb/data/:/var/lib/mysql
         command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_general_ci']
@@ -23,8 +23,7 @@ services:
         environment:
           - TZ=Asia/Bangkok
           - MYSQL_ROOT_PASSWORD=docker
-          - MYSQL_USER=sa
-          - MYSQL_PASSWORD=sa
+        
           - MYSQL_ROOT_HOST=% 
       
   phpmyadmin_mariadb:
@@ -35,5 +34,5 @@ services:
           - 8200:80
         environment:
           MYSQL_USERNAME: root
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: docker
           PMA_HOST: mariaDB

@@ -47,9 +47,12 @@ $modules['user'] = [
 $modules['gridview'] = ['class' => '\kartik\grid\Module']; //system
 $modules['admin'] = ['class' => 'mdm\admin\Module']; // จัดการระบ
 $modules['gridviewKrajee'] = ['class' => '\kartik\grid\Module']; //system
+$modules['uploadimage'] = ['class' => 'dkhlystov\uploadimage\Module']; //system
 $modules['usermanager'] = ['class' => 'app\modules\usermanager\Usermanager']; //จัดการผู้ใช้งานระบบ
 $modules['mr'] = ['class' => 'app\modules\mr\Module']; //ระบบจัดการห้องประชุม
 $modules['hr'] = ['class' => 'app\modules\hr\Hr']; //ระบบงานออฟฟิศ
 $modules['stock'] = ['class' => 'app\modules\stock\Stock']; //ระบบงานพัสดุ
+$modules['financial'] = ['class' => 'app\modules\financial\Module']; //ระบบการเงิน
+$modules['crm'] = ['class' => 'app\modules\crm\Module']; //ระบบการเงิน
 
 return $modules;

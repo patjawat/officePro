@@ -26,13 +26,13 @@ $config = [
             ],
         ],
         'db' => $db,
-        'mr' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=mariadb;port=3306;dbname=mr',
-            'username' => 'root',
-            'password' => 'docker',
-            'charset' => 'utf8',
-        ],
+        // 'mr' => [
+        //     'class' => 'yii\db\Connection',
+        //     'dsn' => 'mysql:host=mariadb;port=3306;dbname=mr',
+        //     'username' => 'root',
+        //     'password' => 'docker',
+        //     'charset' => 'utf8',
+        // ],
     ],
     'params' => $params,
     /*

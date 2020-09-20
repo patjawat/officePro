@@ -3,19 +3,17 @@
 namespace app\modules\mr\models;
 
 use Yii;
-
+use yii\helpers\Json;
 /**
- * This is the model class for table "books".
+ * This is the model class for table "mr_books".
  *
  * @property int $id
- * @property string|null $title
- * @property string|null $content
- * @property string|null $photo
- * @property int|null $cost
- * @property int|null $price
- * @property int|null $status
+ * @property int $category_id ห้องประชุม
+ * @property string|null $data_json
  * @property string $created_at
  * @property string $updated_at
+ *
+ * @property MrCategory $category
  */
 class Books extends \yii\db\ActiveRecord
 {
@@ -24,7 +22,7 @@ class Books extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'books';
+        return 'mr_books';
     }
 
     /**
@@ -41,10 +39,10 @@ class Books extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content'], 'string'],
-            [['cost', 'price', 'status'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['title', 'photo'], 'string', 'max' => 255],
+            [['category_id'], 'required'],
+            [['category_id'], 'integer'],
+            [['created_at', 'updated_at','date_start','date_end','status','data_json'], 'safe'],
+            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
 
@@ -55,14 +53,35 @@ class Books extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'content' => 'Content',
-            'photo' => 'Photo',
-            'cost' => 'Cost',
-            'price' => 'Price',
-            'status' => 'Status',
+            'category_id' => 'ห้องประชุม',
+            'data_json' => 'Data Json',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function afterFind()
+    {
+        $this->data_json = Json::decode($this->data_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        return parent::afterFind();
+    }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            $this->data_json = Json::encode($this->data_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    /**
+     * Gets query for [[Category]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory()
+    {
+        return $this->hasOne(MrCategory::className(), ['id' => 'category_id']);
     }
 }
