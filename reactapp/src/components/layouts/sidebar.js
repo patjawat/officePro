@@ -53,6 +53,14 @@ export default function Sidebar() {
                                 </p>
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/products">
+                                <i className="nav-icon fas fa-tachometer-alt" />
+                                <p>
+                                    Product
+                                </p>
+                            </Link>
+                        </li>
 
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">

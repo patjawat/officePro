@@ -13,6 +13,7 @@ import Sidebar from './sidebar';
 import Navbar from './navbar';
 import Demo1 from '../demo1'
 import Home from '../home'
+import Product from '../products'
 
 export default function Main() {
 
@@ -45,6 +46,9 @@ export default function Main() {
                                         </Route>
                                         <Route path="/demo1">
                                             <Demo1 />
+                                        </Route>
+                                        <Route path="/products">
+                                            <Product />
                                         </Route>
                                         <Route path="/" exact>
                                             <Home />
