@@ -61,6 +61,14 @@ export default function Sidebar() {
                                 </p>
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/meetings">
+                                <i className="nav-icon fas fa-tachometer-alt" />
+                                <p>
+                                    Meeting
+                                </p>
+                            </Link>
+                        </li>
 
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">

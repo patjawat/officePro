@@ -1048,17 +1048,52 @@
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@fullcalendar/bootstrap/-/bootstrap-4.4.2.tgz#b396aa39fd2e49c1bfb68deb677df5a5544bb924"
 
+"@fullcalendar/common@~5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/common/-/common-5.3.1.tgz#9193032cf88f12ebcd8337ef6e98b23fbbbf04ca"
+  dependencies:
+    tslib "^2.0.0"
+
 "@fullcalendar/core@^4.4.0":
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-4.4.2.tgz#864abe98cce4497a163c01a8fc30389f15d3d4e1"
+
+"@fullcalendar/core@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-5.3.1.tgz#183140648e4c07a452e10a13259768406065329f"
+  dependencies:
+    "@fullcalendar/common" "~5.3.1"
+    preact "^10.0.5"
+    tslib "^2.0.0"
 
 "@fullcalendar/daygrid@^4.4.0", "@fullcalendar/daygrid@~4.4.0":
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-4.4.2.tgz#568bfb3c7cc97f83b57cf3aef0fa3ed1bf6eda16"
 
+"@fullcalendar/daygrid@^5.3.2":
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-5.3.2.tgz#c12160fb76729f13dc423c0db12664969ef01af0"
+  dependencies:
+    "@fullcalendar/common" "~5.3.1"
+    tslib "^2.0.0"
+
 "@fullcalendar/interaction@^4.4.0":
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@fullcalendar/interaction/-/interaction-4.4.2.tgz#0a6be06538f843b6f0f4e9b4de87a5e3ec3629fb"
+
+"@fullcalendar/interaction@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/interaction/-/interaction-5.3.1.tgz#0eaf6c9210df3b5f947e40c3582009c99c2551f6"
+  dependencies:
+    "@fullcalendar/common" "~5.3.1"
+    tslib "^2.0.0"
+
+"@fullcalendar/react@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/react/-/react-5.3.1.tgz#b7b86f6b2dc8315b51d4c05663e4e4aef9ff680a"
+  dependencies:
+    "@fullcalendar/common" "~5.3.1"
+    tslib "^2.0.0"
 
 "@fullcalendar/timegrid@^4.4.0":
   version "4.4.2"
@@ -8137,6 +8172,10 @@ postcss@^7, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.17, po
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
+preact@^10.0.5:
+  version "10.5.2"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.2.tgz#4c07c27f4239666840e0d637ec7c110cfcae181d"
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -9948,6 +9987,10 @@ ts-pnp@^1.1.6:
 tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
+
+tslib@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
 
 tsutils@^3.17.1:
   version "3.17.1"
