@@ -14,6 +14,7 @@ import Navbar from './navbar';
 import Demo1 from '../demo1'
 import Home from '../home'
 import Product from '../products'
+import Meeting from '../meeting'
 
 export default function Main() {
 
@@ -40,6 +41,9 @@ export default function Main() {
                                    
                                         <Route path="/counter">
                                             <Counter />
+                                        </Route>
+                                        <Route path="/meetings">
+                                            <Meeting />
                                         </Route>
                                         <Route path="/books">
                                             <Book />
