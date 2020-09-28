@@ -37,8 +37,8 @@ Route::post('login', function () {
     $token = $user->createToken('postman', ['admin']);
         return response()->json([
             'token' => $token->plainTextToken,
-            'user' => $user,
-            'status' => 'ok',
+            // 'user' => $user,
+            // 'status' => 'ok',
         ]);
     }
 });

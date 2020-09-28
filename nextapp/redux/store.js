@@ -11,7 +11,6 @@ import logger from 'redux-logger'
 import rootReducer from './rootReducer'
 
 
-const store = createStore(rootReducer, 
-  composeWithDevTools(applyMiddleware(logger)))
+const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(logger)))
 
 export default store;

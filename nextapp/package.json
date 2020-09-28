@@ -21,6 +21,7 @@
     "bootstrap": "^4.5.2",
     "formik": "^2.1.5",
     "jquery": "^3.5.1",
+    "js-cookie": "^2.2.1",
     "next": "9.5.3",
     "next-redux-wrapper": "^6.0.2",
     "node-device-detector": "^1.2.7",

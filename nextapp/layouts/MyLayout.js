@@ -1,20 +1,48 @@
 import React, { useState,useEffect } from "react";
 import { useRouter } from 'next/router'
-
+import { useSelector, useDispatch } from 'react-redux'
+import Cookies from 'js-cookie'
+import dynamic from 'next/dynamic'
+// import axios from "axios";
+import axios from '../axios.config';
 import Header from './header'
 import Sidebar from "./sidebar";
 import Footer from "./footer";
+import api from '../services/api'
 
 export default function MyLayout({ children }) {
   const router = useRouter()
-  const [user, setUser] = useState('rrrrrr9');
+  const store = useSelector(state => state);
+  const [user, setUser] = useState(null)
+  const token = Cookies.get('token')
+  
+  useEffect( async () => {
+    try {
+     
+            if (token) {
+                // try {
+                //  axios.get('http://localhost:8000/api/numbers',{
+                //    headers:{
+                //     Authorization:token
+                //    }
+                //  }).then((res)=>{
+                //    console.log(res.data);
 
-  useEffect(() => {
-    if (user) { // will run the condition if user exists
-      router.push('/login')
+                //  });
+                const { data: user } = await api.get('numbers')
+                // if (user) setUser('111');
+                // } catch (error) {
+                //   // setErrorMessage(error.message);
+                // }
+            }else{
+            router.push('/login')
+            }
+    } catch (error) {
+      
     }
+      
+  }, [])
 
-  }, [user])
   return (
     <>
       <Header />

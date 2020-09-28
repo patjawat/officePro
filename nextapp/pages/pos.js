@@ -1,9 +1,14 @@
 import React from 'react'
 import MyLayout from "../layouts/MyLayout";
+import { useRouter } from 'next/router'
 import List from '../components/pos/list'
 export default function Pos() {
+    const router = useRouter()
+
     return (
         <div>
+            <button className="btn btn-primary mb-3" onClick={()=>{router.push('/products')}}>+ สินค้า</button>
+
             <div className="row">
                 <div className='col-8'>
                     <List />

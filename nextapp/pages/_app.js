@@ -1,31 +1,56 @@
-import React from "react";
+import React,{useState} from "react";
 import Router from 'next/router';
-import NProgress from 'nprogress'; //nprogress module
-import 'nprogress/nprogress.css'; //styles of nprogress
-import withRedux from 'next-redux-wrapper';
+
+// add nprogress module
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+
+// add Redux Store
 import { Provider } from 'react-redux'
 import store from '../redux/store'
-// import store from '../store';
 
+import LoadingScreen from '../components/loadingScreen'
+
+
+// add css Style
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'admin-lte/dist/css/adminlte.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
 import '../styles/globals.css'
 
-import Link from 'next/link'
+//progress ตอนโหลดหน้าเพจ
+// Router.events.on('routeChangeStart', () => NProgress.start()); 
+// Router.events.on('routeChangeComplete', () => NProgress.done());
+// Router.events.on('routeChangeError', () => NProgress.done());
 
-
-//Binding events. 
-Router.events.on('routeChangeStart', () => NProgress.start()); 
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
 
 export default function MyApp({ Component, pageProps, ...rest }) {
+  const [loading, setLoading] = useState(false)
+  
+  Router.onRouteChangeStart = (url) => {
+    NProgress.start()
+    setLoading(true)
+
+  };
+  
+  Router.onRouteChangeComplete = (url) => {
+    NProgress.done()
+    setLoading(false)
+  };
+  
+  Router.onRouteChangeError = (err, url) => {
+    NProgress.done()
+    setLoading(false)
+
+  }; 
+
+
   const Layout = Component.Layout ? Component.Layout : React.Fragment;
+
   return (
     <Provider store={store}>
       <Layout>
+        {loading ? <LoadingScreen /> : ''}
         <Component {...pageProps} />
       </Layout>
     </Provider>

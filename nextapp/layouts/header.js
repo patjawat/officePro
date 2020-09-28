@@ -1,10 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
+import Cookies from 'js-cookie'
 
 export default function header() {
   const counter = useSelector(state => state.book.numOfBooks);
   const dispatch = useDispatch();
+  const router = useRouter()
+
 
   return (
     <nav className="main-header navbar navbar-expand navbar-white navbar-light">
@@ -16,6 +20,11 @@ export default function header() {
       <Link href="/" className="nav-item d-none d-sm-inline-block">
                 <a className="nav-link">
                 หน้าหลัก
+                </a>
+              </Link>
+              <Link href="/about" className="nav-item d-none d-sm-inline-block">
+                <a className="nav-link">
+                About
                 </a>
               </Link>
       <li className="nav-item dropdown">
@@ -72,7 +81,7 @@ export default function header() {
           <a href="#" className="dropdown-item">
             {/* Message Start */}
             <div className="media">
-              <img src="/admin-lte/admin-lte/img/user1-128x128.jpg" alt="User Avatar" className="img-size-50 mr-3 img-circle" />
+              <img src="/admin-lte/dist/img/user1-128x128.jpg" alt="User Avatar" className="img-size-50 mr-3 img-circle" />
               <div className="media-body">
                 <h3 className="dropdown-item-title">
                   Brad Diesel
@@ -88,7 +97,7 @@ export default function header() {
           <a href="#" className="dropdown-item">
             {/* Message Start */}
             <div className="media">
-              <img src="<?=$assetDir?>/img/user8-128x128.jpg" alt="User Avatar" className="img-size-50 img-circle mr-3" />
+              <img src="/admin-lte/dist/img/user8-128x128.jpg" alt="User Avatar" className="img-size-50 img-circle mr-3" />
               <div className="media-body">
                 <h3 className="dropdown-item-title">
                   John Pierce
@@ -104,7 +113,7 @@ export default function header() {
           <a href="#" className="dropdown-item">
             {/* Message Start */}
             <div className="media">
-              <img src="<?=$assetDir?>/img/user3-128x128.jpg" alt="User Avatar" className="img-size-50 img-circle mr-3" />
+              <img src="/admin-lte/dist/img/user3-128x128.jpg" alt="User Avatar" className="img-size-50 img-circle mr-3" />
               <div className="media-body">
                 <h3 className="dropdown-item-title">
                   Nora Silvester
@@ -177,9 +186,17 @@ export default function header() {
             {/* /.row */}
           </li>
           {/* Menu Footer*/}
-          <li class="user-footer">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                      <a class="btn btn-default btn-flat float-right" href="" >Sign out</a></li>
+          <li className="user-footer">
+          <Link href="/profile">
+                      <a className="btn btn-default btn-flat">Profile</a>
+              </Link>
+                      <a className="btn btn-default btn-flat float-right" onClick={()=>{
+                         Cookies.remove('token', {
+                          expires: 1
+                      });
+                        router.push('/login')
+                       
+                      }}>Sign out</a></li>
         </ul>
       </li>
       <li className="nav-item">
