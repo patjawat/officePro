@@ -1,4 +1,4 @@
-import MyLayout from "../layouts/MyLayout";
+import BackendLayout from "../layouts/BackendLayout";
 import Link from 'next/link'
 
 export default function Account() {
@@ -14,4 +14,4 @@ export default function Account() {
   );
 }
 
-Account.Layout = MyLayout;
+Account.Layout = BackendLayout;

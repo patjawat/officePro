@@ -159,3 +159,13 @@ a {
 }
 
 /* End loading Screen */
+
+.affix {
+  top: 0;
+  width: 100%;
+  z-index: 9999 !important;
+}
+
+.affix + .container-fluid {
+  padding-top: 70px;
+}

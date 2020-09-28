@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MyLayout from "../layouts/MyLayout";
+import BackendLayout from "../layouts/BackendLayout";
 
 export default function Profile() {
   return (
@@ -14,4 +14,4 @@ export default function Profile() {
   );
 }
 
-Profile.Layout = MyLayout;
+Profile.Layout = BackendLayout;

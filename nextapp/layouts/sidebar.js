@@ -1,8 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function sidebar() {
+  const router = useRouter()
+
   const counter = useSelector(state => state.book.numOfBooks);
   const dispatch = useDispatch();
 
@@ -60,16 +63,17 @@ export default function sidebar() {
                 </ul>
               </li>
               <Link href="/pos" className="nav-item">
-                <a className="nav-link">
+                <a className={router.pathname == "/pos" ? "nav-link active" : "nav-link"}>
                   <i className="nav-icon fas fa-th" />{' '}
                   <p>
+         
                     POS
                     <span className="right badge badge-danger">New</span>
                   </p>
                 </a>
               </Link>
               <Link href="/meetings" className="nav-item">
-                <a className="nav-link active">
+                <a className={router.pathname == "/meetings" ? "nav-link active" : "nav-link"}>
                   <i className="nav-icon fas fa-th" />{' '}
                   <p>
                     จองห้องประชุม

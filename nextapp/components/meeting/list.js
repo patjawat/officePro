@@ -1,4 +1,6 @@
 import React from 'react'
+import Link from 'next/link'
+
 const names = ['James', 'Paul', 'John', 'George', 'Ringo'];
 
 export default function list() {
@@ -29,7 +31,17 @@ export default function list() {
   <div className="card-body">
     <img className="img-fluid pad" src="/admin-lte/dist/img/photo2.png" alt="Photo" />
     <p>I took this photo this morning. What do you guys think?</p>
-    <button type="button" className="btn btn-default btn-sm"><i className="fas fa-share" /> Share</button>
+        <Link
+        
+          href={{
+            pathname: '/meetings/create',
+            query: { id: name },
+          }}
+        >
+          <a className="btn btn-sm btn-primary">จอง</a>
+        </Link>
+{' '}
+
     <button type="button" className="btn btn-default btn-sm"><i className="far fa-thumbs-up" /> Like</button>
     <span className="float-right text-muted">127 likes - 3 comments</span>
   </div>

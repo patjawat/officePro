@@ -1,5 +1,5 @@
 import React from 'react'
-import MyLayout from "../layouts/MyLayout";
+import BackendLayout from "../layouts/BackendLayout";
 import { useRouter } from 'next/router'
 import List from '../components/pos/list'
 export default function Pos() {
@@ -36,4 +36,4 @@ export default function Pos() {
         </div>
     )
 }
-Pos.Layout = MyLayout;
+Pos.Layout = BackendLayout;

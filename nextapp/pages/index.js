@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
-import MyLayout from "../layouts/MyLayout";
+import BackendLayout from "../layouts/BackendLayout";
 export default function Home(props) {
 
   const counter = useSelector(state => state.book.numOfBooks);
@@ -32,4 +32,4 @@ export default function Home(props) {
 
 
 
-Home.Layout = MyLayout;
+Home.Layout = BackendLayout;
