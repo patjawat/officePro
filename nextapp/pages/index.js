@@ -23,7 +23,7 @@ export default function Home(props) {
 //     step: 1
 // })
 }}>Loading...</button>
-{JSON.stringify(store)}
+{/* {JSON.stringify(store)} */}
      
 </div>
 

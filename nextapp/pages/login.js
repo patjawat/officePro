@@ -40,7 +40,7 @@ export default function Login() {
                 </div>
                 <div className="card-body">
                     <Formik
-                        initialValues={{ email: '', password: '' }}
+                        initialValues={{ email: 'admin@local.com', password: '112233' }}
                         validate={values => {
                             const errors = {};
                             if (!values.email) {
@@ -52,20 +52,36 @@ export default function Login() {
                             }
                             return errors;
                         }}
-                        onSubmit={async (values, { setSubmitting }) => {
-                            let res = await axios.post(url + 'login', values);
-                            let data = res.data;
-                            try {
-                                dispatch({
-                                    type: "USER_LOGIN",
-                                    payload: res.data
-                                })
-                                Cookies.set('token', 'Bearer ' + data.token, { expires: 60 })
-                                router.push('/')
+                        // onSubmit={async (values, { setSubmitting }) => {
+                        //     const { data } = await axios.post(url + 'login', values);
+                        //     try {
+                        //         dispatch({
+                        //             type: "USER_LOGIN",
+                        //             payload: data
+                        //         })
+                        //         Cookies.set('token', 'Bearer ' + data.token, { expires: 60 }).then(()=>{
+                        //             router.push('/')
+                        //         })
 
-                            } catch (error) {
-                                setErrorMessage(error.message);
-                            }
+                        //     } catch (error) {
+                        //         setErrorMessage(error.message);
+                        //     }
+                        // }}
+                        onSubmit={(values, { setSubmitting }) => {
+                            axios.post(url + 'login', values).then((res)=>{
+                                    dispatch({
+                                      type: "USER_LOGIN",
+                                       payload: res.data
+                                  })
+                                  Cookies.set('token', 'Bearer ' + res.data.token, { expires: 60 })
+                                  dispatch({type: 'GET_USER',payload: res.data});
+                                  router.push('/')
+                                })
+                                // .then((res)=>{
+                                //     // dispatch({type: 'GET_USER',payload: res.data});
+                                //     console.log(res);
+                                // })
+                          
                         }}
                     >
                         {({

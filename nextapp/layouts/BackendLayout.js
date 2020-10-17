@@ -1,47 +1,35 @@
-import React, { useState,useEffect } from "react";
-import { useRouter,withRouter } from 'next/router'
+import React, { useEffect } from "react";
+import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import Cookies from 'js-cookie'
-import dynamic from 'next/dynamic'
-// import axios from "axios";
 import axios from '../axios.config';
 import Header from './header'
 import Sidebar from "./sidebar";
 import Footer from "./footer";
-import api from '../services/api'
 
 export default function BackendLayout({ children }) {
   const router = useRouter()
+  const dispatch = useDispatch();
   const store = useSelector(state => state);
-  const [user, setUser] = useState(null)
   const token = Cookies.get('token')
-  
-  useEffect( async () => {
-    try {
-     
-            if (token) {
-                // try {
-                //  axios.get('http://localhost:8000/api/numbers',{
-                //    headers:{
-                //     Authorization:token
-                //    }
-                //  }).then((res)=>{
-                //    console.log(res.data);
 
-                //  });
-                const { data: user } = await api.get('numbers')
-                // if (user) setUser('111');
-                // } catch (error) {
-                //   // setErrorMessage(error.message);
-                // }
-            }else{
-            router.push('/login')
-            }
-    } catch (error) {
-      
-    }
-      
-  }, [])
+
+  useEffect(() => {
+    (async () => {
+      // ตรวจสอบ user Login
+      if(!token){
+        router.push('/login')
+      }
+
+      if (!store.user) {
+        const { data } = await axios.get('user')
+        dispatch({type: 'GET_USER',payload: data});
+      } 
+      // จบดารตรวจสอบ User login
+    })();
+
+  }, []);
+
 
   return (
     <>

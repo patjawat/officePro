@@ -5,7 +5,9 @@ import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
 
 export default function header() {
-  const counter = useSelector(state => state.book.numOfBooks);
+  const store = useSelector(state => state);
+  const username = store.user ? store.user.profile.name : null;
+  
   const dispatch = useDispatch();
   const router = useRouter()
 
@@ -159,7 +161,7 @@ export default function header() {
       <li className="nav-item dropdown user-menu">
         <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">
           <img src="/admin-lte/dist/img/user1-128x128.jpg" className="user-image img-circle elevation-2" alt="User Image" />
-          <span className="d-none d-md-inline">Alexander Pierce</span>
+  <span className="d-none d-md-inline">{username}</span>
         </a>
         <ul className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           {/* User image */}

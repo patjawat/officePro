@@ -9225,6 +9225,16 @@ react-fast-compare@^2.0.1:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
 
+react-files-hooks@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-files-hooks/-/react-files-hooks-1.1.4.tgz#8960797647601ecf25e263cf76a3686ffa0ec0b9"
+  integrity sha512-GQeSC2SeemQrD8lto3ioNr4VgRKuRMvupeL80O6LjbbF3YPpUfHEyaMGArEU5+Vwu1B1O/OqoTU+9TDiUxmfLg==
+
+react-hook-form@^6.9.3:
+  version "6.9.3"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.9.3.tgz#26a56f5ce505dc401afc2d2500d07788cbdb9cdd"
+  integrity sha512-OmE1LMlGc3xXEB9ed9oezaGdVZtRwcz0Ck6XQxXDhOX1I1/s+WSXgXIiv0M7b96jmXg6CdwzYG3qvtCBeapcWg==
+
 react-hooks-paginator@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/react-hooks-paginator/-/react-hooks-paginator-0.4.4.tgz#5d3be0d145b6d12a4839591dcf433eec2bb240f9"

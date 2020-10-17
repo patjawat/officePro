@@ -1,13 +1,16 @@
 import { combineReducers } from 'redux'
 
-import bookReducer from './book/bookReducer'
+
 import authReducer from './auth/authReducer'
 import themeReducer from './themes/themeReducer'
+import bookReducer from './book/bookReducer'
+import userReducer from './user/userReducer'
 
 const rootReducer = combineReducers({
-  book:bookReducer,
   auth:authReducer,
   theme:themeReducer,
+  book:bookReducer,
+  user:userReducer
 })
 
 export default rootReducer;

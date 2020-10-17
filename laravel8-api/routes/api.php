@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\controllers\Api\CustomerController;
+use App\Http\controllers\Api\UploadController;
+use App\Http\controllers\Api\DocumentController;
 use App\models\User;
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +39,7 @@ Route::post('login', function () {
     $token = $user->createToken('postman', ['admin']);
         return response()->json([
             'token' => $token->plainTextToken,
-            // 'user' => $user,
+            'profile' => $user,
             // 'status' => 'ok',
         ]);
     }
@@ -48,4 +50,24 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         $use = auth()->user();
         return $use->tokenCan('admin') ? response()->json([1, 2, 3, 4]) : abort(403);
     });
+
+    Route::get('user', function (Request $request) {
+        // return response()->json([1, 2, 3, 4]);
+        $user =  $request->user();
+        $token = $user->createToken('postman', ['admin']);
+        return response()->json([
+            'token' => $token->plainTextToken,
+            'profile' => $user,
+            // 'status' => 'ok',
+        ]);
+    });
+    Route::get('storefile',function(){
+        return 'dd';
+    });
+  
 });
+Route::apiResource('store-file', DocumentController::class);
+
+// Route::prefix('v1')->group(function(){
+    // Route::post('store-file', DocumentController::class);
+//    });
