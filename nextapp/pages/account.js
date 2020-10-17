@@ -1,4 +1,4 @@
-import BackendLayout from "../layouts/BackendLayout";
+import Theme from "../layouts/adminle3";
 import Link from 'next/link'
 
 export default function Account() {
@@ -14,4 +14,4 @@ export default function Account() {
   );
 }
 
-Account.Layout = BackendLayout;
+Account.Layout =Theme;

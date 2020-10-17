@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import BackendLayout from "../layouts/BackendLayout";
+import Theme from "../layouts/adminle3";
 import { useSelector, useDispatch } from 'react-redux'
 
 
@@ -41,4 +41,4 @@ export default function About() {
 
     )
   }
-About.Layout = BackendLayout;
+About.Layout =Theme;

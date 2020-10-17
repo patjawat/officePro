@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import BackendLayout from "../../layouts/BackendLayout";
+import Theme from "../../layouts/adminle3";
 import List from '../../components/meeting/list'
 import RoomForm from '../../components/meeting/roomForm'
 export default function Meetings() {
@@ -12,4 +12,4 @@ export default function Meetings() {
         </div>
     )
 }
-Meetings.Layout = BackendLayout;
+Meetings.Layout =Theme;

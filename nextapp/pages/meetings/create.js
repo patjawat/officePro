@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
-import BackendLayout from "../../layouts/BackendLayout";
+import AdminLte3 from "../../layouts/AdminLte3";
 
 export default function Create() {
     const router = useRouter()
@@ -13,4 +13,4 @@ export default function Create() {
         </div>
     )
 }
-Create.Layout = BackendLayout;
+Create.Layout =Theme;

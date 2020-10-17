@@ -6,6 +6,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Kanit', sans-serif;
+
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
@@ -19,14 +20,43 @@ a {
   box-sizing: border-box;
 }
 
+
+.card {
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 7px 0px rgb(206 206 206 / 20%);
+    margin-bottom: 1rem;
+}
+
+.main-header {
+  border-bottom: 1px solid #ffffff;
+  z-index: 1034;
+}
+
+.dropdown-menu {
+  
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: .25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.175);
+}
+
 .container_blank{
   background: linear-gradient(100deg, rgb(182, 40, 111) 50%, #ac2066 0);
   width: 100%;
   height: 100vh;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
+
+.container_bg{
+  /* background: linear-gradient(100deg, rgb(182, 40, 111) 50%, #ac2066 0); */
+  background-color:#f4f6f9;
+
+  /* width: 100%;
+  height: 100vh;
+  justify-content: center; */
+  /* font-size: 15px; */
+}
+
 
 .containers {
   background: linear-gradient(100deg, rgb(182, 40, 111) 50%, #ac2066 0);

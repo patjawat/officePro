@@ -1,5 +1,5 @@
 import React from 'react'
-import BackendLayout from "../../layouts/BackendLayout";
+import AdminLte3 from "../../layouts/AdminLte3";
 
 export default function Setting() {
     return (
@@ -8,4 +8,4 @@ export default function Setting() {
         </div>
     )
 }
-Setting.Layout = BackendLayout;
+Setting.Layout =Theme;
