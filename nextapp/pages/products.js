@@ -1,5 +1,5 @@
 import React from 'react'
-import MyLayout from "../layouts/MyLayout";
+import Theme from "../layouts/adminle3";
 import { useRouter } from 'next/router'
 import ProductForm from '../components/products/proructForm'
 
@@ -108,4 +108,4 @@ export default function Products() {
     )
 }
 
-Products.Layout = MyLayout;
+Products.Layout =Theme;

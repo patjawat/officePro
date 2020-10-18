@@ -18,19 +18,15 @@ import 'admin-lte/dist/css/adminlte.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../styles/globals.css'
 
-//progress ตอนโหลดหน้าเพจ
-// Router.events.on('routeChangeStart', () => NProgress.start()); 
-// Router.events.on('routeChangeComplete', () => NProgress.done());
-// Router.events.on('routeChangeError', () => NProgress.done());
-
 
 export default function MyApp({ Component, pageProps, ...rest }) {
+  
   const [loading, setLoading] = useState(false)
   
+  //progress ตอนโหลดหน้าเพจ
   Router.onRouteChangeStart = (url) => {
     NProgress.start()
     setLoading(true)
-
   };
   
   Router.onRouteChangeComplete = (url) => {
@@ -41,9 +37,7 @@ export default function MyApp({ Component, pageProps, ...rest }) {
   Router.onRouteChangeError = (err, url) => {
     NProgress.done()
     setLoading(false)
-
   }; 
-
 
   const Layout = Component.Layout ? Component.Layout : React.Fragment;
 
