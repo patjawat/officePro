@@ -15,7 +15,9 @@ import Navbar from './navbar';
 import Demo1 from '../demo1'
 import Home from '../home'
 import Product from '../products'
-import Meeting from '../meeting'
+import Manual from '../manual'  
+import Setting from '../setting'  
+
 
 export default function Main() {
 
@@ -33,11 +35,11 @@ export default function Main() {
   
                                     <Switch>
                                    
-                                        <Route path="/counter">
-                                            <Counter />
+                                        <Route path="/setting">
+                                            <Setting />
                                         </Route>
-                                        <Route path="/meetings">
-                                            <Meeting />
+                                        <Route path="/manual">
+                                            <Manual />
                                         </Route>
                                         <Route path="/books">
                                             <Book />

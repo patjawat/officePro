@@ -21,3 +21,7 @@ code {
   border-bottom: 1px solid #ffffff00 !important;
   z-index: 1034;
 }
+
+.container, .container-sm, .container-md, .container-lg, .container-xl {
+  max-width: 1336px !important;
+}
