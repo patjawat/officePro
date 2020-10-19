@@ -1,6 +1,11 @@
-import React from 'react'
-
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from 'react-redux'
+import axios from "axios";
 export default function List() {
+  const [data, setData] = useState({ courses: [] });
+  const items = useSelector(state => state);
+  const dispatch = useDispatch();
     return (
         <div>
            <div className="card card-widget collapsed-card">
@@ -12,8 +17,7 @@ export default function List() {
     </div>
     {/* /.user-block */}
     <div className="card-tools">
-      <button type="button" className="btn btn-tool" data-toggle="tooltip" title="Mark as read">
-        <i className="far fa-circle" /></button>
+    <span class="badge badge-warning badge-pill"><i class="far fa-pause-circle"></i> รอการยินยัน</span>
       <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus" />
       </button>
       <button type="button" className="btn btn-tool" data-card-widget="remove"><i className="fas fa-times" />
@@ -83,8 +87,7 @@ export default function List() {
     </div>
     {/* /.user-block */}
     <div className="card-tools">
-      <button type="button" className="btn btn-tool" data-toggle="tooltip" title="Mark as read">
-        <i className="far fa-circle" /></button>
+    <span class="badge badge-success badge-pill"><i class="fas fa-check"></i> อนุมัติ</span>
       <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus" />
       </button>
       <button type="button" className="btn btn-tool" data-card-widget="remove"><i className="fas fa-times" />
@@ -154,8 +157,7 @@ export default function List() {
     </div>
     {/* /.user-block */}
     <div className="card-tools">
-      <button type="button" className="btn btn-tool" data-toggle="tooltip" title="Mark as read">
-        <i className="far fa-circle" /></button>
+    <span class="badge badge-success badge-pill"><i class="fas fa-check"></i> อนุมัติ</span>
       <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus" />
       </button>
       <button type="button" className="btn btn-tool" data-card-widget="remove"><i className="fas fa-times" />

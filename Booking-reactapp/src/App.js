@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import './App.css'
 import { api } from './service/config'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 
 import {
@@ -13,7 +14,7 @@ import {
   useHistory,
   useLocation
 } from "react-router-dom";
-import Main from './components/layouts/main'
+import Main from './layouts/main'
 
 export default function App() {
   return (
@@ -71,6 +72,7 @@ function LoginPage() {
 
       dispatch({ type: "USER_LOGIN", payload: res.data })
       localStorage.setItem("token", res.data.token)
+      Cookies.set('token', 'Bearer ' + res.data.token, { expires: 60 })
       // history.replace('/');
       window.location.href = '/'
 
@@ -86,7 +88,6 @@ function LoginPage() {
       <div className="col-4 offset-4">
         <div className="login-logo">
           <a href="../../index2.html"><b>Admin</b>LTE</a>
-          <h3>{JSON.stringify(auth)}</h3>
         </div>
         {/* /.login-logo */}
         <div className="card">

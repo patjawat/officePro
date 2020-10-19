@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Container, Row, Col,Badge } from 'reactstrap';
+import { Container, Row, Col, Badge } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux'
 import FullCalendar from './fullcalendar'
 import List from './list';
@@ -12,11 +12,11 @@ function Book() {
     return (
         <div>
             <div className="mb-3">
-            <Badge color="primary" pill>Primary</Badge>{' '}
-      <Badge color="secondary" pill>Secondary</Badge>{' '}
-      <Badge color="success" pill><i class="fas fa-check"></i> อนุมัติ</Badge>{' '}
-      <Badge color="danger" pill><i class="fas fa-times"></i> ยกเลิก</Badge>{' '}
-      <Badge color="warning" pill><i class="far fa-pause-circle"></i> รอการยินยัน</Badge>{' '}
+                <Badge color="primary" pill>Primary</Badge>{' '}
+                <Badge color="secondary" pill>Secondary</Badge>{' '}
+                <Badge color="success" pill><i class="fas fa-check"></i> อนุมัติ</Badge>{' '}
+                <Badge color="danger" pill><i class="fas fa-times"></i> ยกเลิก</Badge>{' '}
+                <Badge color="warning" pill><i class="far fa-pause-circle"></i> รอการยินยัน</Badge>{' '}
             </div>
             <List />
             <Row>
@@ -30,7 +30,6 @@ function Book() {
             </Row>
         </div>
     )
-
 }
 export default Book;
 
