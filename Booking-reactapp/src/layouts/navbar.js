@@ -3,7 +3,9 @@ import {
   useHistory,
   useLocation,
   Link,
+  Router
 } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 import { useSelector, useDispatch } from 'react-redux'
 import user from 'admin-lte/dist/img/user2-160x160.jpg'
@@ -176,6 +178,53 @@ function Navbar() {
           <li className="nav-item">
             <a className="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i className="fas fa-th-large" /></a>
           </li>
+
+          <li className="nav-item dropdown user-menu">
+        <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">
+          <img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg" className="user-image img-circle elevation-2" alt="User Image" />
+  <span className="d-none d-md-inline">aaa</span>
+        </a>
+        <ul className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          {/* User image */}
+          <li className="user-header bg-primary">
+            <img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
+            <p>
+              Alexander Pierce - Web Developer
+              <small>Member since Nov. 2012</small>
+            </p>
+          </li>
+          {/* Menu Body */}
+          <li className="user-body">
+            <div className="row">
+              <div className="col-4 text-center">
+                <a href="#">Followers</a>
+              </div>
+              <div className="col-4 text-center">
+                <a href="#">Sales</a>
+              </div>
+              <div className="col-4 text-center">
+                <a href="#">Friends</a>
+              </div>
+            </div>
+            {/* /.row */}
+          </li>
+          {/* Menu Footer*/}
+          <li className="user-footer">
+          <Link href="/profile">
+                      <a className="btn btn-default btn-flat">Profile</a>
+              </Link>
+                      <a className="btn btn-default btn-flat float-right" onClick={()=>{
+                         Cookies.remove('token', {
+                          expires: 1
+                      });
+                        // Router.push('/login')
+                        window.location.href = '/login'
+                       
+                      }}>Sign out</a></li>
+        </ul>
+      </li>
+
+
         </ul>
       </div>
     </nav>

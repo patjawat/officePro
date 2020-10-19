@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
-import ContentHeader from './layouts/contentHeader'
+import ContentHeader from '../layouts/contentHeader'
+import MettingRoom from '../components/meetting-room'
 
+import axios from '../axios.config'
 
 export default function Setting(props) {
 
@@ -37,7 +39,7 @@ export default function Setting(props) {
                 <TabPane tabId="1">
                     <Row>
                         <Col sm="12">
-                            <h4>รายการห้องประชุม</h4>
+                            <MettingRoom />
                         </Col>
                     </Row>
                 </TabPane>

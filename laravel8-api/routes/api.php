@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\controllers\Api\CustomerController;
 use App\Http\controllers\Api\UploadController;
 use App\Http\controllers\Api\DocumentController;
+use App\Http\controllers\Api\MeetingRoomController;
 use App\models\User;
 /*
 |--------------------------------------------------------------------------
@@ -65,8 +66,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         return 'dd';
     });
   
+    Route::apiResource('meetting-room', MeetingRoomController::class);
 });
-Route::apiResource('store-file', DocumentController::class);
 
 // Route::prefix('v1')->group(function(){
     // Route::post('store-file', DocumentController::class);
