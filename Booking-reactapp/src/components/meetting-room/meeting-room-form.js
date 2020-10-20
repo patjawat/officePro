@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef, useEffectf} from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from 'react-redux'
 import axios from '../../axios.config'
@@ -6,7 +6,8 @@ import axios from '../../axios.config'
 export default function MeetingRoomForm({setRooms,items,editing,handleCancel,currentItem,getItem}) {
   const {id,name,description} = currentItem;
   const { register, handleSubmit, watch, errors } = useForm();
-  
+  const inputRef = useRef();
+
   const onSubmit = async (data, e) => {
     if(editing){
       let res = await axios.put('/meetting-room/'+id, data);
