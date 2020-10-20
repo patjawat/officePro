@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Button } from "reactstrap"
-import { useForm } from "react-hook-form";
-import { useSelector, useDispatch } from 'react-redux'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-import axios from "../../axios.config";
-export default function MeetingRoomTable({items}) {
-  const [data, setData] = useState({ courses: [] });
-  const dispatch = useDispatch();
 
-  const MySwal = withReactContent(Swal)
+export default function MeetingRoomTable({items,handleRemoveItem,editItem}) {
 
   return (
     <>
       {items.map((item, i) =>
-        <ul className="list-unstyled mt-3">
+        <ul className="list-unstyled mt-3" key={i}>
           <li className="row">
             <a href="#" className="col-2">
               <img src="https://via.placeholder.com/200x200/5fa9f8/ffffff" alt="Image" className="rounded img-fluid" />
@@ -28,32 +20,14 @@ export default function MeetingRoomTable({items}) {
                 <span className="text-muted ml-1">{item.description}</span>
               </div>
               <div className="text-small mt-4">
-                <Button size="sm" color="warning"><i class="far fa-edit"></i> แก้ไข</Button>{'   '}
-                <Button size="sm" color="danger" onClick={async () => {
-                  Swal.fire({
-                    title: 'Do you want to save the changes?',
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: `Save`,
-                    denyButtonText: `Don't save`,
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      axios.delete('meetting-room/' + item.id).then(() => {
-                        Swal.fire('Saved!', '', 'success')
-                        // getItem()
-                      })
-                    } else if (result.isDenied) {
-                      Swal.fire('Changes are not saved', '', 'info')
-                    }
-                  })
-                }}><i class="far fa-trash-alt"></i> ลบ</Button>
+                <Button id={item.id} name={item.name} size="sm" color="warning" onClick={editItem}><i class="far fa-edit"></i> แก้ไข</Button>{'   '}
+                <span id={item.id} name={item.name} onClick={handleRemoveItem} className="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> ลบ</span>
               </div>
             </div>
           </li>
         </ul>
       )
       }
-
     </>
   )
 }

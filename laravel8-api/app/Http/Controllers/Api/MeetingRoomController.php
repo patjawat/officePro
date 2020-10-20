@@ -30,7 +30,11 @@ class MeetingRoomController extends Controller
         $model->name = $request->name;
         $model->description = $request->description;
         $model->save();
-        return response()->json($request);
+        return response()->json([
+            'id' => $model->id,
+            'name' => $model->name,
+            'description' => $model->description
+        ]);
     }
 
     /**
@@ -53,7 +57,22 @@ class MeetingRoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return response()->json($id);
+        if (MeetingRoom::where('id', $id)->exists()) {
+            $model = MeetingRoom::find($id);
+    
+            $model->name = is_null($request->name) ? $model->name : $request->name;
+            $model->description = is_null($request->description) ? $model->description : $request->description;
+            $model->save();
+    
+            return response()->json([
+              "message" => 'Success'
+            ], 200);
+          } else {
+            return response()->json([
+              "message" => "MeetingRoom not found"
+            ], 404);
+          }
     }
 
     /**
