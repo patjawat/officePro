@@ -7,14 +7,21 @@ import MettingRoom from '../components/meetting-room'
 
 import axios from '../axios.config'
 
+
+// const Demo = () => {
+//     alert();
+// }
 export default function Setting(props) {
 
     const [activeTab, setActiveTab] = useState('1');
+
+    const [ex1, setEx1] = useState('1');
 
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
 
+    
     return (
         <ContentHeader title="ตั้งค่าระบบ">
             <Nav tabs>
@@ -39,7 +46,7 @@ export default function Setting(props) {
                 <TabPane tabId="1">
                     <Row>
                         <Col sm="12">
-                            <MettingRoom />
+                            <MettingRoom ex1={ex1} setEx1={setEx1}/>
                         </Col>
                     </Row>
                 </TabPane>

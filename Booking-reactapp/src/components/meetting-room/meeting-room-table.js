@@ -5,36 +5,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import axios from "../../axios.config";
-export default function MeetingRoomTable() {
+export default function MeetingRoomTable({items}) {
   const [data, setData] = useState({ courses: [] });
-  const items = useSelector(state => state.meettingroom.items);
   const dispatch = useDispatch();
 
   const MySwal = withReactContent(Swal)
-
-
-  useEffect(() => {
-    (async () => {
-
-    })();
-  }, []);
-
-
-  async function getItem() {
-    const res = await axios.get("meetting-room");
-    dispatch({
-      type: 'GET_MEETTINGROOM',
-      payload: res.data
-    })
-  }
-
-  async function itemEdit(i) {
-    const res = await axios.get("meetting-room");
-    dispatch({
-      type: 'GET_MEETTINGROOM',
-      payload: res.data
-    })
-  }
 
   return (
     <>
@@ -65,7 +40,7 @@ export default function MeetingRoomTable() {
                     if (result.isConfirmed) {
                       axios.delete('meetting-room/' + item.id).then(() => {
                         Swal.fire('Saved!', '', 'success')
-                        getItem()
+                        // getItem()
                       })
                     } else if (result.isDenied) {
                       Swal.fire('Changes are not saved', '', 'info')

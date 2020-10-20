@@ -67,7 +67,7 @@ function LoginPage() {
     try {
       let res = await axios.post(api.url + 'login', {
         email: 'admin@local.com',
-        password: '112233'
+        password: '11223344'
       });
 
       dispatch({ type: "USER_LOGIN", payload: res.data })
