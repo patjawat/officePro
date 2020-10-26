@@ -35,8 +35,7 @@ export default function ListItems({ data }) {
   return (
     <div>
       <Table dataSource={data}>
-        <Column title="First Name" dataIndex="name" key="name" />
-        
+        <Column title="รายการแผนก/หน่วยงาน" dataIndex="name" key="name" />
         <Column
           title="Action"
           key="action"

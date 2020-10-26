@@ -40,7 +40,7 @@ class CategoryController extends Controller
         $model->type = $request->type;
         $model->name = $request->name;
         if($model->save()){
-            unset($model->id,$model->created_at,$model->updated_at);
+            unset($model->created_at,$model->updated_at);
             return response()->json([
                 'status' => 'successful',
                 'item' => $model

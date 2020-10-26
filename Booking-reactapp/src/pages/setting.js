@@ -45,7 +45,7 @@ export default function Setting(props) {
                         className={classnames({ active: activeTab === '3' })}
                         onClick={() => { toggle('3'); }}
                     >
-                       xxx
+                       หมวดหมู่
           </NavLink>
                 </NavItem>
             </Nav>

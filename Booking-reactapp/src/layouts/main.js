@@ -17,7 +17,7 @@ import Home from '../pages'
 // import Product from './components/products'
 import Manual from '../pages/manual'
 import Setting from '../pages/setting'
-import AddBooking from '../pages/addbooking'
+import AddBooking from '../pages/booking/addbooking'
 
 export default function Main() {
 
