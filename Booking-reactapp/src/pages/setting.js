@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import ContentHeader from '../layouts/contentHeader'
 import MettingRoom from '../components/meetting-room'
-
+import Category from '../components/category'
 import axios from '../axios.config'
 
 
@@ -13,7 +13,7 @@ import axios from '../axios.config'
 // }
 export default function Setting(props) {
 
-    const [activeTab, setActiveTab] = useState('1');
+    const [activeTab, setActiveTab] = useState('2');
 
     const [ex1, setEx1] = useState('1');
 
@@ -21,7 +21,6 @@ export default function Setting(props) {
         if (activeTab !== tab) setActiveTab(tab);
     }
 
-    
     return (
         <ContentHeader title="ตั้งค่าระบบ">
             <Nav tabs>
@@ -38,7 +37,15 @@ export default function Setting(props) {
                         className={classnames({ active: activeTab === '2' })}
                         onClick={() => { toggle('2'); }}
                     >
-                        More Tabs
+                        แผนก/หน่วยงาน
+          </NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink
+                        className={classnames({ active: activeTab === '3' })}
+                        onClick={() => { toggle('3'); }}
+                    >
+                       xxx
           </NavLink>
                 </NavItem>
             </Nav>
@@ -46,26 +53,24 @@ export default function Setting(props) {
                 <TabPane tabId="1">
                     <Row>
                         <Col sm="12">
-                            <MettingRoom ex1={ex1} setEx1={setEx1}/>
+                            <MettingRoom ex1={ex1} setEx1={setEx1} />
                         </Col>
                     </Row>
                 </TabPane>
                 <TabPane tabId="2">
                     <Row>
-                        <Col sm="6">
-                            <Card body>
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                <Button>Go somewhere</Button>
-                            </Card>
+                        <Col sm="12">
+                            <Category title="แผนก/หน่วยงาน" type="department" />
                         </Col>
-                        <Col sm="6">
-                            <Card body>
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                <Button>Go somewhere</Button>
-                            </Card>
+
+                    </Row>
+                </TabPane>
+                <TabPane tabId="3">
+                    <Row>
+                        <Col sm="12">
+                            <Category title="หมวดหมู่" type="rooms" />
                         </Col>
+
                     </Row>
                 </TabPane>
             </TabContent>

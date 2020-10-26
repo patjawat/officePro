@@ -1,8 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import './App.css'
-import { api } from './service/config'
-import axios from 'axios'
+import axios from './axios.config'
 import Cookies from 'js-cookie'
 
 
@@ -65,7 +64,7 @@ function LoginPage() {
   let { from } = location.state || { from: { pathname: "/" } };
   const login = async () => {
     try {
-      let res = await axios.post(api.url + 'login', {
+      let res = await axios.post('login', {
         email: 'admin@local.com',
         password: '11223344'
       });

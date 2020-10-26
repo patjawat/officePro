@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MeetingRoom;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class MeetingRoomController extends Controller
 {
@@ -15,7 +17,11 @@ class MeetingRoomController extends Controller
      */
     public function index()
     {
-        return response()->json(MeetingRoom::all());
+        // return response()->json(MeetingRoom::all());
+        return response()->json([
+            'rooms' => MeetingRoom::all(),
+            'category' => []
+        ]);
     }
 
     /**
@@ -26,16 +32,72 @@ class MeetingRoomController extends Controller
      */
     public function store(Request $request)
     {
-        $model = new MeetingRoom();
-        $model->name = $request->name;
-        $model->description = $request->description;
-        $model->save();
-        return response()->json([
-            'id' => $model->id,
-            'name' => $model->name,
-            'description' => $model->description
-        ]);
+
+        $response = null;
+        $user = (object) ['file' => ""];
+
+        if ($request->hasFile('file')) {
+            $original_filename = $request->file('file')->getClientOriginalName();
+            $original_filename_arr = explode('.', $original_filename);
+            $file_ext = end($original_filename_arr);
+            $destination_path = './upload/rooms/';
+            $image = 'U-' . time() . '.' . $file_ext;
+
+            if ($request->file('file')->move($destination_path, $image)) {
+                $user->image = '/upload/user/' . $image;
+                $model = new MeetingRoom();
+                $model->name = $request->name;
+                $model->description = $request->description;
+                $model->photo = $image;
+                $model->save();
+                unset($model->created_at,$model->updated_at);
+                return response()->json($model);
+            } else {
+                return $this->responseRequestError('Cannot upload file');
+            }
+        } else {
+            return $this->responseRequestError('File not found');
+        }
     }
+
+
+
+    protected function responseRequestSuccess($ret)
+    {
+        return response()->json(['status' => 'success', 'data' => $ret], 200)
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    }
+
+    protected function responseRequestError($message = 'Bad request', $statusCode = 200)
+    {
+        return response()->json(['status' => 'error', 'error' => $message], $statusCode)
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    }
+
+
+
+    public function uploadimage(Request $request)
+{
+//  $validator = Validator::make($request->all(), [
+//     'file' => 'required|image:jpeg,png,jpg,gif,svg|max:2048'
+//  ]);
+//  if ($validator->fails()) {
+//     return sendCustomResponse($validator->messages()->first(),  'error', 500);
+//  }
+//  $uploadFolder = 'users';
+//  $image = $request->file('file');
+//  $image_uploaded_path = $image->store($uploadFolder, 'public');
+// //  $uploadedImageResponse = array(
+// //     "image_name" => basename($image_uploaded_path),
+// //     "image_url" => Storage::disk('public')-  >url($image_uploaded_path),
+// //     "mime" => $image->getClientMimeType()
+// //  );
+//  return sendCustomResponse('File Uploaded Successfully', 'success',   200, $uploadedImageResponse);
+
+return response()->json($request->all());
+}
 
     /**
      * Display the specified resource.

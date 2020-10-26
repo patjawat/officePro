@@ -17,6 +17,7 @@ import Home from '../pages'
 // import Product from './components/products'
 import Manual from '../pages/manual'
 import Setting from '../pages/setting'
+import AddBooking from '../pages/addbooking'
 
 export default function Main() {
 
@@ -35,9 +36,9 @@ export default function Main() {
                     <Route path="/manual">
                         <Manual />
                     </Route>
-                    {/* <Route path="/books">
-                        <Book />
-                        </Route> */}
+                    <Route path="/addbooking">
+                        <AddBooking />
+                        </Route>
                   
                     <Route path="/" exact>
                         <Home />

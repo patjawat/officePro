@@ -1,13 +1,14 @@
 import authType from './authType'
+import Cookies from 'js-cookie'
 
 const initialState = {
     // isLogin: false,
     // userId: '',
-    token: localStorage.getItem("token"),
+    token: Cookies.get("token"),
     // refreshToken: '',
     // expiresOn: '',
     // data: '',
-    isAuthUser: localStorage.getItem("token") ? true : false,
+    isAuthUser: Cookies.get("token") ? true : false,
     // user: JSON.parse(localStorage.getItem("user")) || {},
     isLoading: false,
     error: null,

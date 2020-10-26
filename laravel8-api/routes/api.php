@@ -6,6 +6,7 @@ use App\Http\controllers\Api\CustomerController;
 use App\Http\controllers\Api\UploadController;
 use App\Http\controllers\Api\DocumentController;
 use App\Http\controllers\Api\MeetingRoomController;
+use App\Http\controllers\Api\CategoryController;
 use App\models\User;
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
   
     Route::apiResource('meetting-room', MeetingRoomController::class);
+    Route::apiResource('category', CategoryController::class);
 });
 
 // Route::prefix('v1')->group(function(){

@@ -2,7 +2,8 @@
 import meettingroomType from './meettingroomType';
 
 const initialState = {
-    items:[]
+    items:[],
+    addBooking:[]
 }
 
 function meettingroomReducer(state = initialState, action) {
@@ -12,6 +13,11 @@ function meettingroomReducer(state = initialState, action) {
                 ...state,
                 items:action.payload
             }
+            case meettingroomType.ADD_BOOKING:
+                return {
+                    ...state,
+                    addBooking:action.payload
+                }
             case meettingroomType.GET_MEETTING_ROOM_ERROR:
                 return {
                     ...state,

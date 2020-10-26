@@ -6,18 +6,21 @@ import MeetingRoomTable from './meeting-room-table';
 import axios from "../../axios.config";
 import withReactContent from 'sweetalert2-react-content'
 import Swal from 'sweetalert2'
+import MeettingRoom from '../../services/MeettingRoomService'
 
 export default function Index() {
-  const store = useSelector(state => state);
-  const items = useSelector(state => state.meettingroom.items);
+  // const store = useSelector(state => state);
+  // const items = useSelector(state => state.meettingroom.items);
+
   const [editing, setEditing] = useState(false);
 
-  const initialItem = { id: null, name: '', description: '' };
-  const [currentItem, setCurrentItem] = useState(initialItem);
 
+  const initialItem = { id: null, name: '', description: '',photo:'' };
+  const [currentItem, setCurrentItem] = useState(initialItem);
   const [rooms, setRooms] = useState([])
   const [list, updateList] = useState([]);
   const MySwal = withReactContent(Swal)
+
 
   useEffect(() => {
     (async () => {
@@ -25,10 +28,9 @@ export default function Index() {
     })();
   }, []);
 
-
   async function getItem() {
-    const res = await axios.get("meetting-room");
-    setRooms(res.data)
+    const res = await MeettingRoom.getMeettingRoom()
+    setRooms(res.data.rooms)
     updateList(res.data)
   }
 
@@ -39,13 +41,12 @@ export default function Index() {
       title: 'ลบ '+name+' ?',
       showCancelButton: true,
       confirmButtonText: `ยืนยัน`,
-      // denyButtonText: `Don't save`,
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete('meetting-room/' + id).then(() => {
-          setRooms(rooms.filter(item => item.name !== name));
-          handleCancel()
-        })
+        MeettingRoom.deleteMeettingRoom(id).then(() => {
+            setRooms(rooms.filter(item => item.name !== name));
+            handleCancel()
+          })
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')
       }
@@ -66,7 +67,7 @@ export default function Index() {
   return (
     <div>
       <Row>
-        <Col sm="4">
+        <Col lg="4" md="4" sm="6" >
           <MeetingRoomForm
             items={rooms}
             setRooms={setRooms}
@@ -79,7 +80,7 @@ export default function Index() {
             getItem={getItem}
           />
         </Col>
-        <Col sm="8">
+        <Col lg="8" md="8" sm="6">
           <MeetingRoomTable
             items={rooms}
             setRooms={setRooms}
@@ -90,10 +91,6 @@ export default function Index() {
       </Row>
     </div>
   )
-
-}
-const getMettingRoom = () => {
-  alert()
 }
 
 

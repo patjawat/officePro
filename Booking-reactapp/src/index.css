@@ -25,3 +25,7 @@ code {
 .container, .container-sm, .container-md, .container-lg, .container-xl {
   max-width: 1336px !important;
 }
+
+.previewProfilePic > img{
+  max-width: 300px;
+}
